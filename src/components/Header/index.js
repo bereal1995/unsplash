@@ -1,16 +1,17 @@
 import React from "react";
 import styled from  "styled-components";
+import {Link} from "react-router-dom";
 
 
 function Header() {
     return (
         <Container>
-            <Logo>Logo</Logo>
+            <Logo to={"/"}>Logo</Logo>
             <Nav>
-                <NavItem>Home</NavItem>
-                <NavItem>todos</NavItem>
-                <NavItem>photos</NavItem>
-                <NavItem>users</NavItem>
+                <NavItem to={"/"}>Home</NavItem>
+                <NavItem to={"/todos"}>todos</NavItem>
+                <NavItem to={"/photos"}>photos</NavItem>
+                <NavItem to={"/users"}>users</NavItem>
             </Nav>
         </Container>
     )
@@ -25,24 +26,26 @@ const Container = styled.header`
   padding: 0 60px;
 `;
 
-const Logo = styled.div`
+const Logo = styled(Link)`
   display:flex;
   align-items: center;
   font-size: 18px;
   font-weight: bold;
   text-transform:uppercase;
+  color: #333;
 `;
 
 const Nav = styled.nav`
   display: flex;
 `;
 
-const NavItem = styled.div`
+const NavItem = styled(Link)`
   display:flex;
   align-items: center;
   padding: 0 25px;
   text-transform:uppercase;
-  font-size: 16px;;
+  font-size: 16px;
+  color: #333;
   &:hover {
     color: #08c;
   }
