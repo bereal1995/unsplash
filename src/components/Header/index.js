@@ -1,19 +1,36 @@
-import React from "react";
+import React, {useState} from "react";
 import styled from  "styled-components";
 import {Link} from "react-router-dom";
+import Sidemenu from "./Sidemenu";
+import {HiMenu} from "react-icons/hi";
 
 
-function Header() {
+function Header(props) {
+
+    const [value, setValue] = useState(false);
+
     return (
-        <Container>
-            <Logo to={"/"}>Logo</Logo>
-            <Nav>
-                <NavItem to={"/"}>Home</NavItem>
-                <NavItem to={"/todos"}>todos</NavItem>
-                <NavItem to={"/photos"}>photos</NavItem>
-                <NavItem to={"/users"}>users</NavItem>
-            </Nav>
-        </Container>
+        <>
+            <Container>
+                <Logo to={"/"}>Logo</Logo>
+                <Gnb>
+                    <Nav>
+                        <NavItem to={"/"}>Home</NavItem>
+                        <NavItem to={"/todos"}>todos</NavItem>
+                        <NavItem to={"/photos"}>photos</NavItem>
+                        <NavItem to={"/users"}>users</NavItem>
+                    </Nav>
+                    <ButtonMenu onClick={() => {
+                        setValue(!value);
+                    }}>
+                        <HiMenu/>
+                    </ButtonMenu>
+                </Gnb>
+            </Container>
+            {
+                value && <Sidemenu setPopup={props.setPopup}/>
+            }
+        </>
     )
 }
 
@@ -35,6 +52,11 @@ const Logo = styled(Link)`
   color: #333;
 `;
 
+const Gnb = styled.div`
+  display: flex;
+    
+`;
+
 const Nav = styled.nav`
   display: flex;
 `;
@@ -49,6 +71,14 @@ const NavItem = styled(Link)`
   &:hover {
     color: #08c;
   }
+`;
+
+const ButtonMenu = styled.div`
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+    margin-left: 40px;
+    cursor:pointer;
 `;
 
 export default Header;
