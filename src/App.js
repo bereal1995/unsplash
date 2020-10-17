@@ -36,7 +36,7 @@ function App() {
             <Route exact path={"/"} component={Home}/>
             <Route path={"/photos"} component={Photos}/>
             <Route path={"/todos"} component={Todos}/>
-            <Route path={"/todos/:id"} component={Todos}/>
+            <Route path={"/todos"} component={Todos}/>
             <Route path={"/users"} component={Users}/>
             <Route component={Page404}/>
         </Switch>
