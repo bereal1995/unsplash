@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import styled, {createGlobalStyle} from "styled-components";
 import Header from "./components/Header";
 import {Route, Switch} from "react-router-dom";
@@ -8,6 +8,8 @@ import Todos from "./pages/Todos";
 import Users from "./pages/Users";
 import Page404 from "./pages/Result/Page404";
 import Popup from "./components/Popup";
+import {useDispatch, useSelector} from "react-redux";
+import {Action} from "./redux/reducer";
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -25,12 +27,13 @@ const GlobalStyle = createGlobalStyle`
 
 function App() {
 
-    const [popup, setPopup] = useState(false);
+    const state = useSelector( (state) => state)
+    const dispatch = useDispatch();
 
   return (
       <Container>
           <GlobalStyle/>
-        <Header setPopup={setPopup}/>
+        <Header/>
 
         <Switch>
             <Route exact path={"/"} component={Home}/>
@@ -41,10 +44,14 @@ function App() {
             <Route component={Page404}/>
         </Switch>
           {
-              popup &&
-              <Popup title={"공지사항"}
-              description={"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aliquam beatae cumque delectus eveniet modi neque obcaecati placeat ratione soluta!"}
-              onClose={() => {setPopup(false)}}/>
+              state.popup.title &&
+              <Popup title={state.popup.title}
+              description={state.popup.content}
+              onClose={() => dispatch(Action.Creators.handlePopup({
+                  title: "",
+                  content: ""
+              }))}
+              />
           }
       </Container>
   )

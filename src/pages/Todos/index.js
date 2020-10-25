@@ -2,6 +2,8 @@ import React, {useEffect, useState} from "react";
 import styled from "styled-components";
 import axios from "axios";
 import TodoItem from "./TodoItem";
+import {useDispatch, useSelector} from "react-redux";
+import {Action} from "../../redux/reducer";
 
 function Todos(props) {
 
@@ -9,34 +11,35 @@ function Todos(props) {
 
     } = props;
 
-    const [todos, setTodos] = useState([]);
+    const dispatch = useDispatch();
+    const state = useSelector(state => state);
     const [value, setValue] = useState("");
 
     useEffect( () => {
         getTodos();
-    }, [])
+    }, [state.triggerUpdate])
 
     const getTodos = async () => {
-        const result = await axios.get("http://localhost:7070/todo");
-        setTodos(result.data);
+        const result = await axios.get("http://localhost:8080/todo");
+        dispatch(Action.Creators.setTodos(result.data));
     }
-
-    console.log("@@ todos", todos);
 
     const onValue = (e) => {
         setValue(e.target.value);
     }
 
     const addTodo = async () => {
-        const result = await axios.post("http://localhost:7070/todo", {
+        const result = await axios.post("http://localhost:8080/todo", {
             title: value
         });
-        setValue("");
+        dispatch(Action.Creators.triggerUpdate(!state.triggerUpdate))
     }
 
     const deleteTodo = async (id) => {
-        await axios.delete(`http://localhost:7070/todo/${id}`)
+        await axios.delete(`http://localhost:8080/todo/${id}`);
+        dispatch(Action.Creators.triggerUpdate(!state.triggerUpdate))
     }
+    
 
     return (
         <Container>
@@ -47,7 +50,7 @@ function Todos(props) {
                 <Button onClick={addTodo}>추가하기</Button>
             </EnterTodoContainer>
             {
-                todos.map( (item, i) => (
+                state.todos.map( (item, i) => (
                     <TodoItem key={i}
                               onDelete={deleteTodo}
                               {...item}

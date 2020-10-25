@@ -1,12 +1,19 @@
 import React from "react";
 import styled from "styled-components";
+import {useDispatch} from "react-redux";
+import {Action} from "../../redux/reducer";
 
 function Sidemenu(props) {
+
+    const dispatch = useDispatch();
 
     return (
         <Container>
             <div className="btn-notice" onClick={() => {
-                props.setPopup(true);
+                dispatch(Action.Creators.handlePopup({
+                    title: "공지사항",
+                    content: "dsadjasldjasldjalkdja"
+                }))
             }}>공지사항</div>
         </Container>
     )

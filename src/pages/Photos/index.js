@@ -2,14 +2,18 @@ import React, {useEffect, useState} from "react";
 import styled from "styled-components";
 import axios from 'axios';
 import PhotoItems from "./PhotoItems";
+import {useDispatch, useSelector} from "react-redux";
+import {Action} from "../../redux/reducer";
 
 
 function Photos() {
 
     const accessKey = "0KUYkYxvvkLzXiKIQE8LN0ED7_mEal1xnoP4EXu9YeA";
-    const [photos, setPhotos] = useState([]);
     const [keyword, setKeyword] = useState("");
     const [page, setPage] = useState(1);
+
+    const dispatch = useDispatch();
+    const state = useSelector(state => state);
 
     useEffect( () => {
         getPhotos();
@@ -22,18 +26,18 @@ function Photos() {
 
     const getPhotos = async () => {
         const result = await axios.get(`https://api.unsplash.com/photos/?client_id=${accessKey}`);
-        setPhotos(result.data);
+        dispatch(Action.Creators.setPhotos(result.data));
     }
 
     const searchPhotos = async () => {
         const result = await axios.get(`https://api.unsplash.com/search/photos/?client_id=${accessKey}&query=${keyword}&per_page=25&page=${page}`);
-        setPhotos(result.data.results);
-
+        dispatch(Action.Creators.setPhotos(result.data.results));
+        
+        console.log("@@ result", result);
     }
 
     const onNext = () => {
         setPage(page + 1)
-        console.log(page);
     }
 
     return (
@@ -43,7 +47,7 @@ function Photos() {
             <Next onClick={onNext}>다음 페이지</Next>
             <Row>
                 {
-                    photos.map( (item, i) => (
+                    state.photos.map( (item, i) => (
                         <Col key={i}>
                             <PhotoItems photoUrl={item.urls.regular}
                                         title={item.alt_description}

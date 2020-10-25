@@ -1,13 +1,18 @@
-import React, {useState} from "react";
+import React from "react";
 import styled from  "styled-components";
 import {Link} from "react-router-dom";
 import Sidemenu from "./Sidemenu";
 import {HiMenu} from "react-icons/hi";
+import {useDispatch, useSelector} from "react-redux";
+import {Action} from "../../redux/reducer";
+
 
 
 function Header(props) {
 
-    const [value, setValue] = useState(false);
+    const dispatch = useDispatch();
+    const state = useSelector(state => state);
+
 
     return (
         <>
@@ -20,15 +25,13 @@ function Header(props) {
                         <NavItem to={"/photos"}>photos</NavItem>
                         <NavItem to={"/users"}>users</NavItem>
                     </Nav>
-                    <ButtonMenu onClick={() => {
-                        setValue(!value);
-                    }}>
+                    <ButtonMenu onClick={() => dispatch(Action.Creators.handleSideber(!state.sidebar))}>
                         <HiMenu/>
                     </ButtonMenu>
                 </Gnb>
             </Container>
             {
-                value && <Sidemenu setPopup={props.setPopup}/>
+                state.sidebar && <Sidemenu/>
             }
         </>
     )
