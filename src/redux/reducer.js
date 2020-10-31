@@ -12,34 +12,61 @@ const initialState = {
 
 export const Action = {
     Types: {
+        UDATE_STATE: 'updateState',
+
         HANDLE_SIDEBAR: 'handleSidebar',
+
         HANDLE_POPUP: 'handlePopup',
+
         SET_PHOTOS: 'setPhotos',
-        SET_TODOS: 'setTodos',
+
+        FETCH_TODOS: 'fetchTodos',
+        ADD_TODO: 'addTodo',
+        DELETE_TODO: 'deleteTodo',
+
         TRIGGER_UPDATE: 'triggerUpdate',
+
         SET_USERS: 'setUsers',
+
     },
     Creators: {
+        updateState: (payload) => ({
+            type:Action.Types.UDATE_STATE,
+            payload
+        }),
+
+        fetchTodos: () => ({
+            type: Action.Types.FETCH_TODOS
+        }),
+        addTodo: (payload) => ({
+            type: Action.Types.ADD_TODO,
+            payload
+        }),
+        deleteTodo: (id) => ({
+            type: Action.Types.DELETE_TODO,
+            id
+        }),
+
         handleSideber: (payload) => ({
             type: Action.Types.HANDLE_SIDEBAR,
             payload: payload
         }),
+
         handlePopup: (payload) => ({
             type: Action.Types.HANDLE_POPUP,
             payload
         }),
+
         setPhotos: (payload) => ({
             type:Action.Types.SET_PHOTOS,
             payload
         }),
-        setTodos: (payload) => ({
-            type:Action.Types.SET_TODOS,
-            payload
-        }),
+
         triggerUpdate: (payload) => ({
             type:Action.Types.TRIGGER_UPDATE,
             payload
         }),
+
         setUsers: (payload) => ({
             type: Action.Types.SET_USERS,
             payload
@@ -50,6 +77,12 @@ export const Action = {
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         default: return state;
+        case Action.Types.UDATE_STATE: {
+            return {
+                ...state,
+                ...action.payload
+            }
+        }
         case Action.Types.HANDLE_SIDEBAR: {
             return {
                 ...state,
@@ -68,12 +101,6 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 photos: action.payload
-            }
-        }
-        case Action.Types.SET_TODOS: {
-            return {
-                ...state,
-                todos: action.payload
             }
         }
         case Action.Types.TRIGGER_UPDATE: {

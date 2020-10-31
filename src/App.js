@@ -10,6 +10,7 @@ import Page404 from "./pages/Result/Page404";
 import Popup from "./components/Popup";
 import {useDispatch, useSelector} from "react-redux";
 import {Action} from "./redux/reducer";
+import Spinner from "./components/Spinner";
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -53,6 +54,13 @@ function App() {
               }))}
               />
           }
+
+          {
+              state.isLoading && <Spinner/>
+          }
+
+          <Spinner/>
+
       </Container>
   )
 }

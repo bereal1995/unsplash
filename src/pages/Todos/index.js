@@ -16,29 +16,16 @@ function Todos(props) {
     const [value, setValue] = useState("");
 
     useEffect( () => {
-        getTodos();
+        dispatch(Action.Creators.fetchTodos());
     }, [state.triggerUpdate])
-
-    const getTodos = async () => {
-        const result = await axios.get("http://localhost:8080/todo");
-        dispatch(Action.Creators.setTodos(result.data));
-    }
 
     const onValue = (e) => {
         setValue(e.target.value);
     }
 
-    const addTodo = async () => {
-        const result = await axios.post("http://localhost:8080/todo", {
-            title: value
-        });
-        dispatch(Action.Creators.triggerUpdate(!state.triggerUpdate))
-    }
+    const addTodo = () => dispatch(Action.Creators.addTodo(value));
 
-    const deleteTodo = async (id) => {
-        await axios.delete(`http://localhost:8080/todo/${id}`);
-        dispatch(Action.Creators.triggerUpdate(!state.triggerUpdate))
-    }
+    const deleteTodo = (id) => dispatch(Action.Creators.deleteTodo(id));
     
 
     return (
