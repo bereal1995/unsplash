@@ -12,7 +12,7 @@ const initialState = {
 
 export const Action = {
     Types: {
-        UDATE_STATE: 'updateState',
+        UPDATE_STATE: 'updateState',
 
         HANDLE_SIDEBAR: 'handleSidebar',
 
@@ -31,7 +31,7 @@ export const Action = {
     },
     Creators: {
         updateState: (payload) => ({
-            type:Action.Types.UDATE_STATE,
+            type:Action.Types.UPDATE_STATE,
             payload
         }),
 

@@ -5,8 +5,6 @@ const axiosInstance = axios.create({
 
 const request = async (url, method, data = {}) => {
 
-
-
     try {
         const axiosConfig = {
             url,
