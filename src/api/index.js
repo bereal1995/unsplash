@@ -24,6 +24,9 @@ const Api = {
     fetchTodos: (data) => request("http://localhost:8080/todo",'get', {params: data}),
     addTodo: (data) => request("http://localhost:8080/todo",'post', {data: data}),
     deleteTodo : (id) => request(`http://localhost:8080/todo/${id}`, 'delete',),
+
+    fetchPhoto: (data) => request(`https://api.unsplash.com/photos/?`,'get',{params:data}),
+    searchPhoto: (data) => request('https://api.unsplash.com/search/photos/?','get',{params:data}),
 }
 
 export default Api;

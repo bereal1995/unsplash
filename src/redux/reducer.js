@@ -7,18 +7,14 @@ const initialState = {
     photos: [],
     todos: [],
     triggerUpdate: false,
-    users: []
+    users: [],
+
+
 }
 
 export const Action = {
     Types: {
         UPDATE_STATE: 'updateState',
-
-        HANDLE_SIDEBAR: 'handleSidebar',
-
-        HANDLE_POPUP: 'handlePopup',
-
-        SET_PHOTOS: 'setPhotos',
 
         FETCH_TODOS: 'fetchTodos',
         ADD_TODO: 'addTodo',
@@ -26,7 +22,8 @@ export const Action = {
 
         TRIGGER_UPDATE: 'triggerUpdate',
 
-        SET_USERS: 'setUsers',
+        SEARCH_PHOTOS: 'SEARCH_PHOTOS',
+        FETCH_PHOTOS: 'FETCH_PHOTOS',
 
     },
     Creators: {
@@ -47,74 +44,40 @@ export const Action = {
             id
         }),
 
-        handleSideber: (payload) => ({
-            type: Action.Types.HANDLE_SIDEBAR,
-            payload: payload
-        }),
-
-        handlePopup: (payload) => ({
-            type: Action.Types.HANDLE_POPUP,
-            payload
-        }),
-
-        setPhotos: (payload) => ({
-            type:Action.Types.SET_PHOTOS,
-            payload
-        }),
-
         triggerUpdate: (payload) => ({
             type:Action.Types.TRIGGER_UPDATE,
             payload
         }),
 
-        setUsers: (payload) => ({
-            type: Action.Types.SET_USERS,
+        searchPhotos: (payload) => ({
+            type: Action.Types.SEARCH_PHOTOS,
             payload
-        })
+        }),
+        fetchPhotos: (payload) => ({
+           type: Action.Types.FETCH_PHOTOS,
+            payload
+        }),
+
     }
 }
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         default: return state;
-        case Action.Types.UDATE_STATE: {
+        case Action.Types.UPDATE_STATE: {
             return {
                 ...state,
                 ...action.payload
             }
         }
-        case Action.Types.HANDLE_SIDEBAR: {
-            return {
-                ...state,
-                sidebar: action.payload
-            }
-        }
-        case Action.Types.HANDLE_POPUP : {
-            return {
-                ...state,
-                popup: {
-                    ...action.payload
-                }
-            }
-        }
-        case Action.Types.SET_PHOTOS: {
-            return {
-                ...state,
-                photos: action.payload
-            }
-        }
+
         case Action.Types.TRIGGER_UPDATE: {
             return {
                 ...state,
                 triggerUpdate: action.payload
             }
         }
-        case Action.Types.SET_USERS: {
-            return {
-                ...state,
-                users: action.payload
-            }
-        }
     }
+
 }
 export default reducer;

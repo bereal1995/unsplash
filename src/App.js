@@ -8,8 +8,7 @@ import Todos from "./pages/Todos";
 import Users from "./pages/Users";
 import Page404 from "./pages/Result/Page404";
 import Popup from "./components/Popup";
-import {useDispatch, useSelector} from "react-redux";
-import {Action} from "./redux/reducer";
+import {useSelector} from "react-redux";
 import Spinner from "./components/Spinner";
 
 const GlobalStyle = createGlobalStyle`
@@ -29,7 +28,6 @@ const GlobalStyle = createGlobalStyle`
 function App() {
 
     const state = useSelector( (state) => state)
-    const dispatch = useDispatch();
 
   return (
       <Container>
@@ -48,18 +46,12 @@ function App() {
               state.popup.title &&
               <Popup title={state.popup.title}
               description={state.popup.content}
-              onClose={() => dispatch(Action.Creators.handlePopup({
-                  title: "",
-                  content: ""
-              }))}
               />
           }
 
           {
               state.isLoading && <Spinner/>
           }
-
-          <Spinner/>
 
       </Container>
   )

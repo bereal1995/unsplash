@@ -43,9 +43,33 @@ function* saga() {
 
         }),
 
-        takeLatest(Action.Types.SET_PHOTOS, function* () {
+        takeLatest(Action.Types.FETCH_PHOTOS, function* ({payload}) {
+            yield put(Action.Creators.updateState({isLoading:true}));
 
-        })
+            const result = yield call(Api.fetchPhoto, payload)
+            if (result.data) {
+                yield put(Action.Creators.updateState({
+                    photos: result.data
+                }))
+            }
+
+            yield put(Action.Creators.updateState({isLoading:false}));
+        }),
+
+        takeLatest(Action.Types.SEARCH_PHOTOS, function* ({payload}) {
+            yield put(Action.Creators.updateState({isLoading:true}));
+
+            const result = yield call(Api.searchPhoto, payload);
+            if (result.data.results) {
+                yield put(Action.Creators.updateState({
+                    photos: result.data.results
+                }))
+            }
+
+            yield put(Action.Creators.updateState({isLoading:false}));
+
+        }),
+
     ])
 }
 

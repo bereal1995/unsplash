@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from "react";
 import styled from "styled-components";
-import axios from "axios";
 import TodoItem from "./TodoItem";
 import {useDispatch, useSelector} from "react-redux";
 import {Action} from "../../redux/reducer";

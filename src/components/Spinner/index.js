@@ -11,7 +11,7 @@ const rotate = keyframes`
 } 100% {
         transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
 }
-}
+
 `;
 
 function Spinner(props) {
@@ -67,6 +67,6 @@ const Box = styled.div`
         animation: ${rotate} 1.2s infinite ease-in-out;
 `;
 
-  
+
 
 export default Spinner;

@@ -10,9 +10,11 @@ function Sidemenu(props) {
     return (
         <Container>
             <div className="btn-notice" onClick={() => {
-                dispatch(Action.Creators.handlePopup({
-                    title: "공지사항",
-                    content: "dsadjasldjasldjalkdja"
+                dispatch(Action.Creators.updateState({
+                    popup: {
+                        title: "공지사항",
+                        content: "dsadjasldjasldjalkdja"
+                    }
                 }))
             }}>공지사항</div>
         </Container>

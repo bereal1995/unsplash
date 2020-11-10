@@ -25,7 +25,7 @@ function Header(props) {
                         <NavItem to={"/photos"}>photos</NavItem>
                         <NavItem to={"/users"}>users</NavItem>
                     </Nav>
-                    <ButtonMenu onClick={() => dispatch(Action.Creators.handleSideber(!state.sidebar))}>
+                    <ButtonMenu onClick={() => dispatch(Action.Creators.updateState({sidebar: !state.sidebar}))}>
                         <HiMenu/>
                     </ButtonMenu>
                 </Gnb>

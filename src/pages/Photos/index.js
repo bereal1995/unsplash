@@ -24,21 +24,16 @@ function Photos() {
     }, [page]);
 
 
-    const getPhotos = async () => {
-        const result = await axios.get(`https://api.unsplash.com/photos/?client_id=${accessKey}`);
-        dispatch(Action.Creators.setPhotos(result.data));
-    }
-
-    const searchPhotos = async () => {
-        const result = await axios.get(`https://api.unsplash.com/search/photos/?client_id=${accessKey}&query=${keyword}&per_page=25&page=${page}`);
-        dispatch(Action.Creators.setPhotos(result.data.results));
-        
-        console.log("@@ result", result);
-    }
-
-    const onNext = () => {
-        setPage(page + 1)
-    }
+    const getPhotos = () => dispatch(Action.Creators.fetchPhotos({
+        client_id: accessKey,
+    }))
+    const searchPhotos = () => dispatch(Action.Creators.searchPhotos({
+        client_id: accessKey,
+        page: page,
+        per_page: 25,
+        query: keyword,
+    }))
+    const onNext = () => setPage(page + 1)
 
     return (
         <Container>

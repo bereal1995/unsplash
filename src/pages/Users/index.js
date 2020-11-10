@@ -12,7 +12,7 @@ function Users() {
     const getUsers = async () => {
         const result = await axios.get("https://jsonplaceholder.typicode.com/users")
 
-        dispatch(Action.Creators.setUsers(result.data));
+        dispatch(Action.Creators.updateState( {users: result.data}));
     }
 
     return (
