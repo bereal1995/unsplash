@@ -1,6 +1,6 @@
 import React from "react";
 import styled from  "styled-components";
-import {Link} from "react-router-dom";
+import {Link, withRouter} from "react-router-dom";
 import Sidemenu from "./Sidemenu";
 import {HiMenu} from "react-icons/hi";
 import {useDispatch, useSelector} from "react-redux";
@@ -10,6 +10,10 @@ import {Action} from "../../redux/reducer";
 
 function Header(props) {
 
+    const {
+        location
+    } = props;
+    
     const dispatch = useDispatch();
     const state = useSelector(state => state);
 
@@ -20,8 +24,8 @@ function Header(props) {
                 <Logo to={"/"}>Logo</Logo>
                 <Gnb>
                     <Nav>
-                        <NavItem to={"/"}>Home</NavItem>
-                        <NavItem to={"/todos"}>todos</NavItem>
+                        <NavItem to={"/"} className={location.pathname === '/' ? "isActive" : ""}>Home</NavItem>
+                        <NavItem to={"/todos"} className={location.pathname.startsWith('/todos') ? "isActive" : ""}>todos</NavItem>
                         <NavItem to={"/photos"}>photos</NavItem>
                         <NavItem to={"/users"}>users</NavItem>
                     </Nav>
@@ -71,9 +75,11 @@ const NavItem = styled(Link)`
   text-transform:uppercase;
   font-size: 16px;
   color: #333;
-  &:hover {
+  &:hover,
+   &.isActive{
     color: #08c;
   }
+
 `;
 
 const ButtonMenu = styled.div`
@@ -84,4 +90,4 @@ const ButtonMenu = styled.div`
     cursor:pointer;
 `;
 
-export default Header;
+export default withRouter(Header);

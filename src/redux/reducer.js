@@ -6,10 +6,9 @@ const initialState = {
     },
     photos: [],
     todos: [],
+    todoDetail: {},
     triggerUpdate: false,
     users: [],
-
-
 }
 
 export const Action = {
@@ -18,7 +17,9 @@ export const Action = {
 
         FETCH_TODOS: 'fetchTodos',
         ADD_TODO: 'addTodo',
+        UPDATE_TODO: 'UPDATE_TODO',
         DELETE_TODO: 'deleteTodo',
+        FETCH_TODO_BY_ID: 'FETCH_TODO_BY_ID',
 
         TRIGGER_UPDATE: 'triggerUpdate',
 
@@ -39,9 +40,18 @@ export const Action = {
             type: Action.Types.ADD_TODO,
             payload
         }),
+        updateTodo: (id,payload) => ({
+            type: Action.Types.UPDATE_TODO,
+            id,
+            payload,
+        }),
         deleteTodo: (id) => ({
             type: Action.Types.DELETE_TODO,
             id
+        }),
+        fetchTodoById: (payload) => ({
+            type: Action.Types.FETCH_TODO_BY_ID,
+            payload
         }),
 
         triggerUpdate: (payload) => ({

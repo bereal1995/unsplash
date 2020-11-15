@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import {Link} from "react-router-dom";
 
 function TodoItem(props) {
 
@@ -12,7 +13,9 @@ function TodoItem(props) {
 
     return (
         <Container completed={completed}>
-            <h2>{_id}. {title}</h2>
+            <h2>
+                <Link to={`/todos/detail/${_id}`}>{title}</Link>
+            </h2>
             <Delete onClick={() => onDelete(_id)}>삭제</Delete>
         </Container>
     )
