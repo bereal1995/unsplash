@@ -17,6 +17,7 @@ function Write(props) {
     return (
       <Container>
           <TodoForm buttonText={'추가하기'}
+                    onValue={''}
                     onSubmit={addTodo}
           />
       </Container>
