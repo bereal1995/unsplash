@@ -5,7 +5,7 @@ function TodoForm(props) {
 
     const {
         buttonText,
-        defaultValues ={},
+        defaultValues = {},
         onSubmit = () => {},
     } = props;
 

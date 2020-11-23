@@ -27,7 +27,7 @@ const GlobalStyle = createGlobalStyle`
 
 function App() {
 
-    const state = useSelector( (state) => state)
+    const app = useSelector( (state) => state.app)
 
   return (
       <Container>
@@ -43,14 +43,14 @@ function App() {
             <Route component={Page404}/>
         </Switch>
           {
-              state.popup.title &&
-              <Popup title={state.popup.title}
-              description={state.popup.content}
+              app.popup.title &&
+              <Popup title={app.popup.title}
+              description={app.popup.content}
               />
           }
 
           {
-              state.isLoading && <Spinner/>
+              app.isLoading && <Spinner/>
           }
 
       </Container>

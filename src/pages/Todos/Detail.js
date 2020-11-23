@@ -1,8 +1,8 @@
 import React, {useEffect} from 'react';
 import styled from "styled-components";
-import {useDispatch, useSelector} from "react-redux";
-import {Action} from "../../redux/reducer";
+import {useSelector} from "react-redux";
 import {Link} from "react-router-dom";
+import {todoActions} from "../../redux/ActionCreators";
 
 function Detail(props) {
 
@@ -12,17 +12,13 @@ function Detail(props) {
         match,
     } = props;
 
-
-    const dispatch = useDispatch();
-    const todoDetail = useSelector(state => state.todoDetail);
+    const todoDetail = useSelector(state => state.todo.detail);
 
     const id = match.params.id;
     const data = todoDetail[id];
 
-    const fetchTodoById = () => dispatch(Action.Creators.fetchTodoById(id));
+    const fetchTodoById = () => todoActions.fetchTodoById(id);
     
-    console.log('@@data',data);
-
     useEffect(() => {
         if (!data) {
             fetchTodoById();

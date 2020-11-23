@@ -1,25 +1,24 @@
-import React, {useState} from "react";
+import React from "react";
 import styled from "styled-components";
 import axios from 'axios';
-import {useDispatch, useSelector} from "react-redux";
-import {Action} from "../../redux/reducer";
+import {useSelector} from "react-redux";
+import {appActions} from "../../redux/ActionCreators";
 
 function Users() {
 
-    const dispatch = useDispatch();
-    const state = useSelector(state => state);
+    const app = useSelector(state => state.app);
 
     const getUsers = async () => {
         const result = await axios.get("https://jsonplaceholder.typicode.com/users")
 
-        dispatch(Action.Creators.updateState( {users: result.data}));
+        appActions.updateState( {users: result.data});
     }
 
     return (
         <Container>
             <Button onClick={getUsers}>유저 리스트 보기</Button>
             {
-                state.users.map((item, index)=> {
+                app.users.map((item, index)=> {
                     return <h1 key={index}>{item.name}</h1>
                 })
             }

@@ -3,10 +3,8 @@ import styled from  "styled-components";
 import {Link, withRouter} from "react-router-dom";
 import Sidemenu from "./Sidemenu";
 import {HiMenu} from "react-icons/hi";
-import {useDispatch, useSelector} from "react-redux";
-import {Action} from "../../redux/reducer";
-
-
+import {useSelector} from "react-redux";
+import {appActions} from "../../redux/ActionCreators";
 
 function Header(props) {
 
@@ -14,8 +12,7 @@ function Header(props) {
         location
     } = props;
     
-    const dispatch = useDispatch();
-    const state = useSelector(state => state);
+    const app = useSelector(state => state.app);
 
 
     return (
@@ -29,13 +26,13 @@ function Header(props) {
                         <NavItem to={"/photos"}>photos</NavItem>
                         <NavItem to={"/users"}>users</NavItem>
                     </Nav>
-                    <ButtonMenu onClick={() => dispatch(Action.Creators.updateState({sidebar: !state.sidebar}))}>
+                    <ButtonMenu onClick={() => appActions.updateState({sidebar: !app.sidebar})}>
                         <HiMenu/>
                     </ButtonMenu>
                 </Gnb>
             </Container>
             {
-                state.sidebar && <Sidemenu/>
+                app.sidebar && <Sidemenu/>
             }
         </>
     )

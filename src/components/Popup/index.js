@@ -1,19 +1,16 @@
 import React from "react";
 import styled from "styled-components";
-import {useDispatch} from "react-redux";
-import {Action} from "../../redux/reducer";
+import {appActions} from "../../redux/ActionCreators";
 
 function Popup(props) {
 
-    const dispatch = useDispatch();
-
     const onClose = () => {
-        dispatch(Action.Creators.updateState({
+        appActions.updateState({
             popup: {
                 title: '',
                 content: ''
             }
-        }))
+        })
     }
 
     return (

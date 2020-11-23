@@ -22,9 +22,9 @@ const request = async (url, method, data = {}) => {
 
 const Api = {
     fetchTodos: (data) => request("http://localhost:8080/todo",'get', {params: data}),
+    fetchTodoById: (id) => request(`http://localhost:8080/todo/${id}`,'get', ),
     addTodo: (data) => request("http://localhost:8080/todo",'post', {data: data}),
     deleteTodo : (id) => request(`http://localhost:8080/todo/${id}`, 'delete',),
-    fetchTodoById: (id) => request(`http://localhost:8080/todo/${id}`,'get', ),
     updateTodo: (id, data) => request(`http://localhost:8080/todo/${id}`,'post', {data:data} ),
 
     fetchPhoto: (data) => request(`https://api.unsplash.com/photos/?`,'get',{params:data}),

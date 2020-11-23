@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-function PhotoItems(props) {
+function PhotoItem(props) {
 
     const {
         photoUrl,
@@ -59,4 +59,4 @@ const Info = styled.div`
     font-weight: 500;
 `;
 
-export default PhotoItems;
+export default PhotoItem;

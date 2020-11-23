@@ -1,9 +1,9 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect} from "react";
 import styled from "styled-components";
 import TodoItem from "./TodoItem";
-import {useDispatch, useSelector} from "react-redux";
-import {Action} from "../../redux/reducer";
+import {useSelector} from "react-redux";
 import {Link} from "react-router-dom";
+import {todoActions} from "../../redux/ActionCreators";
 
 function List(props) {
 
@@ -11,21 +11,20 @@ function List(props) {
 
     } = props;
 
-    const dispatch = useDispatch();
-    const state = useSelector(state => state);
+    const todo = useSelector(state => state.todo);
 
     useEffect( () => {
-        dispatch(Action.Creators.fetchTodos());
-    }, [state.triggerUpdate])
+        todoActions.fetchTodos();
+    }, [todo.triggerUpdate])
 
-    const deleteTodo = (id) => dispatch(Action.Creators.deleteTodo(id));
+    const deleteTodo = (id) => todoActions.deleteTodo(id);
 
 
     return (
         <Container>
             <Button to={'/todos/write'}>추가하기</Button>
             {
-                state.todos.map( (item, i) => (
+                todo.list.map( (item, i) => (
                     <TodoItem key={i}
                               onDelete={deleteTodo}
                               {...item}
