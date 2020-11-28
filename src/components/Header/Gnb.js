@@ -12,8 +12,7 @@ function Gnb(props) {
   return (
       <Container>
         <Logo withText={true}/>
-        <SearchBox/>
-        <SearchBox shape={'square'}/>
+        <SearchBox shape={'round'}/>
         <MemberNav/>
       </Container>
   )
