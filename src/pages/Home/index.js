@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from "styled-components";
+import Visual from "./Visual";
 
 function index(props) {
 
@@ -9,7 +10,7 @@ function index(props) {
 
   return (
       <Container>
-        index
+          <Visual/>
       </Container>
   )
 }
