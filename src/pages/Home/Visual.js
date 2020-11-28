@@ -1,15 +1,15 @@
 import React from 'react';
 import styled from "styled-components";
 
-function index(props) {
+function Visual(props) {
 
     const {
-
+    
     } = props;
 
   return (
       <Container>
-        index
+        Visual
       </Container>
   )
 }
@@ -18,4 +18,4 @@ const Container = styled.div`
 `;
 
 
-export default index;
+export default Visual;

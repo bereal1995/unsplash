@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from "styled-components";
 
-function index(props) {
+function PhotoList(props) {
 
     const {
 
@@ -9,7 +9,7 @@ function index(props) {
 
   return (
       <Container>
-        index
+        PhotoList
       </Container>
   )
 }
@@ -18,4 +18,4 @@ const Container = styled.div`
 `;
 
 
-export default index;
+export default PhotoList;
