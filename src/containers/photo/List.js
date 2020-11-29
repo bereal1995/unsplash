@@ -4,7 +4,7 @@ import PhotoItem from "./PhotoItem";
 import {photoActions} from "../../redux/ActionCreators";
 import {useSelector} from "react-redux";
 
-function PhotoList(props) {
+function List(props) {
 
     const {
 
@@ -51,4 +51,4 @@ const Col = styled.div`
     padding: 12px;
 `;
 
-export default PhotoList;
+export default List;

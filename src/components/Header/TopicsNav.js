@@ -29,10 +29,10 @@ function TopicsNav(props) {
               <TopicItem className={cn({isActive: location.pathname === '/'})} to={'/'}>Editorial</TopicItem>
               <span className={'button_bar'}/>
               {
-                  topic.list.map( (item, i) => (
+                  topic.headerList.map( (item, i) => (
                       <TopicItem key={i}
-                                 to={`/${item.title}`}
-                                 className={cn({isActive: location.pathname.startsWith(`/${item.title}`)})}
+                                 to={`/topic/${item.title}`}
+                                 className={cn({isActive: location.pathname.startsWith(`/topic/${item.title}`)})}
                       >{item.title}</TopicItem>
                   ))
               }
@@ -40,6 +40,7 @@ function TopicsNav(props) {
       </Container>
   )
 }
+
 const Container = styled.div`
   height: 56px;
   box-shadow: 0px 4px 4px rgba(0,0,0,.4);

@@ -6,10 +6,7 @@ export default function* () {
     yield all([
         takeLatest(Action.Types.FETCH_PHOTOS, function* ({payload}) {
             yield put(Action.Creators.updateState({isLoading:true}));
-
             const result = yield call(Api.fetchPhoto, payload)
-            
-            console.log('@@result',result);
             if (result.data) {
                 yield put(Action.Creators.updateState({
                     list: result.data
@@ -20,7 +17,6 @@ export default function* () {
 
         takeLatest(Action.Types.SEARCH_PHOTOS, function* ({payload}) {
             yield put(Action.Creators.updateState({isLoading:true}));
-
             const result = yield call(Api.searchPhoto, payload);
             if (result.data.results) {
                 yield put(Action.Creators.updateState({
