@@ -11,9 +11,18 @@ const GlobalStyle = createGlobalStyle`
     list-style: none;
     box-sizing: border-box;
     text-decoration: none;
+    font-family: -apple-system,BlinkMacSystemFont,San Francisco,Helvetica Neue,Helvetica,Ubuntu,Roboto,Noto,Segoe UI,Arial,sans-serif;
   }
   img {
     max-width: 100%;
+  }
+  
+  .button_bar{
+    display: inline-block;
+    width: 1px;
+    height: 32px;
+    position: relative;
+    background: #d1d1d1;
   }
   
 `;

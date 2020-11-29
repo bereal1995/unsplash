@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from "styled-components";
 import Visual from "./Visual";
+import PhotoList from "../../containers/photo/PhotoList";
 
 function index(props) {
 
@@ -11,6 +12,7 @@ function index(props) {
   return (
       <Container>
           <Visual/>
+          <PhotoList/>
       </Container>
   )
 }

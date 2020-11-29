@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from "styled-components";
 import SearchBox from "../../components/SearchBox";
-import {PageContainer} from "../../components/Layout/styled";
+import {PageContainer} from "../../components/Layout/Styled";
 import TrendKeyword from "../../components/SearchBox/TrendKeyword";
 
 function Visual(props) {
@@ -49,7 +49,7 @@ function Visual(props) {
   )
 }
 const Container = styled(PageContainer)`
-
+  margin-bottom: 36px;
 `;
 
 const VisualContainer = styled.div`
@@ -79,8 +79,9 @@ const VisualCont = styled.div`
   right: 0;
   top: 0;
   bottom: 0;
+  width: 864px;
   padding: 144px 0;
-  margin: 0 20%;
+  margin: 0 auto;
   font-size: 18px;
   font-weight: 500;
   color: #fff;
@@ -103,7 +104,7 @@ const VisualText = styled.div`
   }
   p {
     margin-top: 16px;
-    line-height: 1.2;
+    line-height: 1.6;
   }
 `;
 

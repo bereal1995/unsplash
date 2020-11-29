@@ -8,6 +8,8 @@ export default function* () {
             yield put(Action.Creators.updateState({isLoading:true}));
 
             const result = yield call(Api.fetchPhoto, payload)
+            
+            console.log('@@result',result);
             if (result.data) {
                 yield put(Action.Creators.updateState({
                     list: result.data

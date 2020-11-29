@@ -42,6 +42,7 @@ const Text = styled.div`
       line-height: 1;
     }
     p {
+      margin-top: 2px;
       font-size: 13px;
       line-height: 1;
     }

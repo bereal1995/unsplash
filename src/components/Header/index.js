@@ -18,7 +18,7 @@ function Header(props) {
 }
 const Container = styled.div`
   background: #fff;
-  position: fixed;
+  position: sticky;
   top: 0;
   left: 0;
   right: 0;

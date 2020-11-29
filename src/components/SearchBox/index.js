@@ -32,11 +32,17 @@ const Label = styled.label`
     display:flex;
     width: 100%;
     align-items: center;
-    height: 38px;
-    border: 1px solid #ddd;
-    border-radius: 25px;
     padding: 0 14px;
     background: #eee;
+    .round & {
+      height: 38px;
+      border-radius: 25px;
+      border: 1px solid #ddd;  
+    }
+    .square & {
+      height: 54px;
+      border-radius: 4px;
+    }
 `;
 
 const Input = styled.input`
