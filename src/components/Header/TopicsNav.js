@@ -8,7 +8,7 @@ import {useSelector} from "react-redux";
 function TopicsNav(props) {
 
     const {
-        location
+        location,
     } = props;
     
     const accessKey = '0KUYkYxvvkLzXiKIQE8LN0ED7_mEal1xnoP4EXu9YeA';
@@ -31,8 +31,8 @@ function TopicsNav(props) {
               {
                   topic.headerList.map( (item, i) => (
                       <TopicItem key={i}
-                                 to={`/topic/${item.title}`}
-                                 className={cn({isActive: location.pathname.startsWith(`/topic/${item.title}`)})}
+                                 to={`/topic/${item.slug}`}
+                                 className={cn({isActive: location.pathname.startsWith(`/topic/${item.slug}`)})}
                       >{item.title}</TopicItem>
                   ))
               }
@@ -42,6 +42,8 @@ function TopicsNav(props) {
 }
 
 const Container = styled.div`
+  overflow: hidden;
+  width: 100%;
   height: 56px;
   box-shadow: 0px 4px 4px rgba(0,0,0,.4);
   font-size: 15px;
@@ -58,6 +60,9 @@ const Topic = styled.div`
 `;
 
 const TopicItem = styled(Link)`
+    display:flex;
+    align-items: center;
+    height: 100%;
     padding: 0 20px;
     color: #767676;
     white-space: nowrap;
@@ -66,6 +71,7 @@ const TopicItem = styled(Link)`
     }
     &.isActive {
       color: #111;
+      box-shadow: inset 0 -2px #111;
     }
 `;
 

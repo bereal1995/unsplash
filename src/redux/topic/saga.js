@@ -18,7 +18,6 @@ export default function* () {
         takeLatest(Action.Types.SEARCH_TOPICS, function* ({id,payload}) {
             yield put(Action.Creators.updateState({isLoading:true}));
             const result = yield call(Api.searchTopics, id,payload)
-            console.log('@@result',result);
             if (result.data) {
                 yield put(Action.Creators.updateState({
                     list: result.data

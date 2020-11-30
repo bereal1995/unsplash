@@ -11,11 +11,11 @@ function TrendKeyword(props) {
       <Container>
           <span>Trending: </span>
           <ul>
-              <li><a href="#">flower, </a></li>
-              <li><a href="#">wallpapers, </a></li>
-              <li><a href="#">backgrounds, </a></li>
-              <li><a href="#">happy, </a></li>
-              <li><a href="#">love</a></li>
+              <li><a href="/search/flower">flower, </a></li>
+              <li><a href="/search/wallpapers">wallpapers, </a></li>
+              <li><a href="/search/backgrounds">backgrounds, </a></li>
+              <li><a href="/search/happy">happy, </a></li>
+              <li><a href="/search/love">love</a></li>
           </ul>
       </Container>
   )

@@ -1,8 +1,8 @@
 import React, {useEffect} from 'react';
 import styled from "styled-components";
-import PhotoItem from "./PhotoItem";
 import {photoActions} from "../../redux/ActionCreators";
 import {useSelector} from "react-redux";
+import PhotoCard from "../../components/Photo/PhotoCard";
 
 function List(props) {
 
@@ -25,9 +25,11 @@ function List(props) {
           {
               photo.list.map( (item, i) => (
                   <Col key={i}>
-                      <PhotoItem imgUrl={item.urls.regular}
-                                 userName={item.user.name}
+                      <PhotoCard imgUrl={item.urls.regular}
+                                 name={item.user.name}
+                                 username={item.user.username}
                                  profileImg={item.user.profile_image.small}
+                                 downloadImg={item.links.download}
                       />
                   </Col>
               ))

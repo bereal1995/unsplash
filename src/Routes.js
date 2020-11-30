@@ -5,6 +5,7 @@ import Brands from "./pages/Brands";
 import Explore from "./pages/Explore";
 import Search from "./pages/Search";
 import Topic from "./pages/Topic";
+import User from "./pages/User";
 
 function Routes() {
 
@@ -15,6 +16,7 @@ function Routes() {
           <Route exact path={"/explore"} component={Explore}/>
           <Route exact path={"/search/:id"} component={Search}/>
           <Route exact path={"/topic/:id"} component={Topic}/>
+          <Route exact path={"/user/:id"} component={User}/>
       </Switch>
   )
 }

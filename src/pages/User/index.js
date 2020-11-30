@@ -1,24 +1,26 @@
 import React from 'react';
 import styled from "styled-components";
-import SearchList from "../../containers/photo/SearchList";
+import UserList from "../../containers/photo/UserList";
 
-function Search(props) {
+function User(props) {
 
     const {
-        match
+        match,
     } = props;
 
-    const query = match.params.id;
+    const query = match.params.id.toLowerCase();
+
 
     return (
-        <Container>
-            <TitleContainer>
-                <h2>{query}</h2>
-            </TitleContainer>
-            <SearchList/>
-        </Container>
-    )
+      <Container>
+          <TitleContainer>
+              <h2>{query}</h2>
+          </TitleContainer>
+          <UserList/>
+      </Container>
+  )
 }
+
 const Container = styled.div`
   max-width: 1320px;
   margin: 0 auto;
@@ -33,4 +35,4 @@ const TitleContainer = styled.div`
     }
 `;
 
-export default Search;
+export default User;
