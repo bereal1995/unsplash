@@ -3,6 +3,8 @@ import styled, {createGlobalStyle} from "styled-components";
 import Header from "./components/Header";
 import {useSelector} from "react-redux";
 import Routes from "./Routes";
+import Spinner from "./components/Spinner";
+
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -39,6 +41,10 @@ function App() {
         <Header/>
 
         <Routes/>
+
+          {
+              app.isLoading && <Spinner/>
+          }
 
 
       </Container>

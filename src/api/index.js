@@ -9,6 +9,7 @@ const Api = {
     searchTopics: (id,data) => FetchJson.get(`/topics/${id}/photos/`,data),
 
     fetchUserPhoto: (id,data) => FetchJson.get(`/users/${id}/photos/`,data),
+    getUserProfile: (id,data) => FetchJson.get(`/users/${id}/`,data),
 }
 
 export default Api;

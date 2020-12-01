@@ -1,6 +1,8 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import styled from "styled-components";
 import UserList from "../../containers/photo/UserList";
+import {useSelector} from "react-redux";
+import {userActions} from "../../redux/ActionCreators";
 
 function User(props) {
 
@@ -8,12 +10,24 @@ function User(props) {
         match,
     } = props;
 
-    const query = match.params.id.toLowerCase();
-
+    const accessKey = '0KUYkYxvvkLzXiKIQE8LN0ED7_mEal1xnoP4EXu9YeA'
+    const user = useSelector(state => state.user.profile);
+    const id = match.params.id;
+    useEffect( () => {
+        getUserProfile()
+    }, [])
+    const getUserProfile = () => userActions.getUserProfile(id,{
+        client_id: accessKey,
+    });
+    const query = user.name;
+    const profileImg = user?.profile_image?.large;
 
     return (
       <Container>
           <TitleContainer>
+              <ProtileImg>
+                  <img src={profileImg} alt=""/>
+              </ProtileImg>
               <h2>{query}</h2>
           </TitleContainer>
           <UserList/>
@@ -35,4 +49,7 @@ const TitleContainer = styled.div`
     }
 `;
 
+const ProtileImg = styled.div`
+    
+`;
 export default User;

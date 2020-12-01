@@ -3,6 +3,7 @@ import styled from "styled-components";
 import {photoActions} from "../../redux/ActionCreators";
 import {useSelector} from "react-redux";
 import PhotoCard from "../../components/Photo/PhotoCard";
+import Spinner from "../../components/Spinner";
 
 function List(props) {
 
@@ -18,6 +19,7 @@ function List(props) {
     const getPhotoList = () => photoActions.fetchPhotos({
         client_id: accessKey,
     })
+    const app = useSelector(state => state.app);
 
   return (
       <Container>

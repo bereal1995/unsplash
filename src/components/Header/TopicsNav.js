@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import styled from "styled-components";
 import {Link, withRouter} from "react-router-dom";
 import cn from 'classnames'
-import {photoActions, topicActions} from "../../redux/ActionCreators";
+import {topicActions} from "../../redux/ActionCreators";
 import {useSelector} from "react-redux";
 
 function TopicsNav(props) {

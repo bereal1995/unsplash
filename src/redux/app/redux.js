@@ -7,6 +7,7 @@ const initialState = {
         content: ''
     },
     users: [],
+    isLoading: false,
 }
 
 export const Action = createActions({

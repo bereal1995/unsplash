@@ -2,11 +2,13 @@ import {createActions, createReducer} from "reduxsauce";
 
 const initialState = {
     list: [],
+    profile: '',
 }
 
 export const Action = createActions({
     updateState: ['payload'],
     fetchUserPhoto: ['id','payload'],
+    getUserProfile: ['id','payload'],
 }, {
     prefix: 'USER/'
 });

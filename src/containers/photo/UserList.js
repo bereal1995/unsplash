@@ -12,10 +12,6 @@ function UserList(props) {
         location
     } = props;
 
-    console.log('@@match',match);
-    console.log('@@location',location);
-
-
     const accessKey = '0KUYkYxvvkLzXiKIQE8LN0ED7_mEal1xnoP4EXu9YeA'
     const user = useSelector(state => state.user);
     const id = match.params.id;
@@ -38,6 +34,7 @@ function UserList(props) {
                                      name={item.user.name}
                                      username={item.user.username}
                                      profileImg={item.user.profile_image.small}
+                                     downloadImg={item.links.download}
                           />
                       </Col>
                   ))
