@@ -1,6 +1,8 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import styled from "styled-components";
-import TopicList from "../../containers/photo/TopicList";
+import {useSelector} from "react-redux";
+import {topicActions} from "../../redux/ActionCreators";
+import List from "../../containers/photo/List";
 
 function Topic(props) {
 
@@ -9,13 +11,22 @@ function Topic(props) {
     } = props;
     
     const query = match.params.id.toLowerCase();
+    const accessKey = '0KUYkYxvvkLzXiKIQE8LN0ED7_mEal1xnoP4EXu9YeA'
+    const topic = useSelector(state => state.topic.list);
+    useEffect( () => {
+        getTopic()
+    },[query])
+    const getTopic = () => topicActions.searchTopics(query,{
+        client_id: accessKey,
+        per_page: 5,
+    })
 
     return (
         <Container>
             <TitleContainer>
                 <h2>{query}</h2>
             </TitleContainer>
-            <TopicList/>
+            <List photo={topic}/>
         </Container>
     )
 }

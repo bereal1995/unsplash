@@ -1,8 +1,7 @@
 import React from 'react';
 import styled from "styled-components";
 import Visual from "./Visual";
-import List from "../../containers/photo/List";
-import Skeleton from "react-loading-skeleton";
+import Photo from "./Photo";
 
 function index(props) {
 
@@ -10,10 +9,13 @@ function index(props) {
 
     } = props;
 
+
+
+
   return (
       <Container>
           <Visual/>
-          <List/>
+          <Photo/>
       </Container>
   )
 }

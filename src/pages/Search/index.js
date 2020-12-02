@@ -1,6 +1,8 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import styled from "styled-components";
-import SearchList from "../../containers/photo/SearchList";
+import {useSelector} from "react-redux";
+import {photoActions} from "../../redux/ActionCreators";
+import List from "../../containers/photo/List";
 
 function Search(props) {
 
@@ -9,13 +11,23 @@ function Search(props) {
     } = props;
 
     const query = match.params.id;
+    useEffect( () => {
+        getPhotoSearch()
+    },[query])
+    const accessKey = '0KUYkYxvvkLzXiKIQE8LN0ED7_mEal1xnoP4EXu9YeA'
+    const photo = useSelector(state => state.photo.search.results);
+    const getPhotoSearch = () => photoActions.searchPhotos({
+        client_id: accessKey,
+        query,
+        per_page: 5,
+    })
 
     return (
         <Container>
             <TitleContainer>
                 <h2>{query}</h2>
             </TitleContainer>
-            <SearchList/>
+            <List photo={photo}/>
         </Container>
     )
 }
