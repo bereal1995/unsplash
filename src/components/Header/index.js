@@ -12,7 +12,6 @@ function Header(props) {
   return (
       <Container>
           <Gnb/>
-          <TopicsNav/>
       </Container>
   )
 }

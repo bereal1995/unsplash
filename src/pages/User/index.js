@@ -3,6 +3,7 @@ import styled from "styled-components";
 import {useSelector} from "react-redux";
 import {userActions} from "../../redux/ActionCreators";
 import List from "../../containers/photo/List";
+import Visual from "./Visual";
 
 function User(props) {
 
@@ -16,6 +17,7 @@ function User(props) {
     const id = match.params.id;
     const query = user.name;
     const profileImg = user?.profile_image?.large;
+    const description = user?.bio;
     useEffect( () => {
         getUserProfile()
         getUserPhoto()
@@ -31,12 +33,10 @@ function User(props) {
 
     return (
       <Container>
-          <TitleContainer>
-              <ProtileImg>
-                  <img src={profileImg} alt=""/>
-              </ProtileImg>
-              <h2>{query}</h2>
-          </TitleContainer>
+          <Visual profileImg={profileImg}
+                  query={query}
+                  description={description}
+          />
           <List photo={userPhoto}/>
       </Container>
   )
@@ -47,16 +47,5 @@ const Container = styled.div`
   margin: 0 auto;
 `;
 
-const TitleContainer = styled.div`
-    padding: 72px 12px;
-    h2 {
-      font-size: 46px;
-      line-height: 1.2;
-      text-transform: capitalize;
-    }
-`;
 
-const ProtileImg = styled.div`
-    
-`;
 export default User;
