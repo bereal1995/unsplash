@@ -1,15 +1,19 @@
 import React, {useEffect} from 'react';
 import styled from "styled-components";
+import PhotoCard from "./PhotoCard";
 import {photoActions} from "../../redux/ActionCreators";
-import {useSelector} from "react-redux";
-import PhotoCard from "../../components/Photo/PhotoCard";
-import Spinner from "../../components/Spinner";
 
-function List(props) {
+function PhotoList(props) {
 
     const {
         photo
     } = props;
+
+    const showPopup = (id) => {
+        photoActions.updateState({
+            popupId: id,
+        })
+    }
 
     return (
       <Container>
@@ -22,6 +26,7 @@ function List(props) {
                                  username={item.user.username}
                                  profileImg={item.user.profile_image.small}
                                  downloadImg={item.links.download}
+                                 onClick={() => showPopup(item.id)}
                       />
                   </Col>
               ))
@@ -45,4 +50,4 @@ const Col = styled.div`
     padding: 12px;
 `;
 
-export default List;
+export default PhotoList;

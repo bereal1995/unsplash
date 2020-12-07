@@ -5,13 +5,16 @@ const initialState = {
     search: {
         results: [],
     },
-
+    popupId: undefined,
+    popupPhoto: [],
 }
 
 export const Action = createActions({
     updateState: ['payload'],
     searchPhotos: ['payload'],
     fetchPhotos: ['payload'],
+    fetchPhotoById: ['payload'],
+    photoPopup: ['payload'],
 }, {
     prefix: 'PHOTO/'
 });

@@ -10,10 +10,11 @@ function PhotoCard(props) {
         profileImg,
         downloadImg,
         username,
+        onClick = () => {},
     } = props;
 
     return (
-        <Container>
+        <Container onClick={onClick}>
             <Thumb>
                 <img src={imgUrl}/>
             </Thumb>

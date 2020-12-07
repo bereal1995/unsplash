@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import styled from "styled-components";
 import {photoActions} from "../../redux/ActionCreators";
 import {useSelector} from "react-redux";
-import List from "../../containers/photo/List";
+import PhotoList from "../../components/Photo/PhotoList";
 
 function Photo(props) {
 
@@ -10,20 +10,18 @@ function Photo(props) {
     
     } = props;
 
-    const accessKey = '0KUYkYxvvkLzXiKIQE8LN0ED7_mEal1xnoP4EXu9YeA'
-    const photo = useSelector(state => state.photo.list);
+    const photo = useSelector(state => state.photo);
     useEffect( () => {
         getPhotoList()
     },[])
-    const getPhotoList = () => photoActions.fetchPhotos({
-        client_id: accessKey,
-    })
+    const getPhotoList = () => photoActions.fetchPhotos()
+
 
 
 
   return (
       <Container>
-          <List photo={photo}/>
+          <PhotoList photo={photo.list}/>
       </Container>
   )
 }

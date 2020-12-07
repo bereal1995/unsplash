@@ -21,6 +21,8 @@ const request = async (method, url,  data = {}) => {
 
         if (method === FetchConsts.GET) {
             axiosConfig.params = data;
+            axiosConfig.params.client_id = '0KUYkYxvvkLzXiKIQE8LN0ED7_mEal1xnoP4EXu9YeA';
+
         } else {
             axiosConfig.data = data;
         }

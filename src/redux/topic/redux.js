@@ -3,6 +3,7 @@ import {createActions, createReducer} from "reduxsauce";
 const initialState = {
     headerList: [],
     list: [],
+    clickTitle: undefined,
 }
 
 export const Action = createActions({

@@ -5,8 +5,10 @@ import Skeleton from "react-loading-skeleton";
 function Spinner(props) {
 
     const {
-
+        isLoading
     } = props;
+
+    if (!isLoading) return null;
 
   return (
       <Container>

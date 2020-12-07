@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import styled from "styled-components";
 import {useSelector} from "react-redux";
 import {userActions} from "../../redux/ActionCreators";
-import List from "../../containers/photo/List";
+import PhotoList from "../../components/Photo/PhotoList";
 import Visual from "./Visual";
 
 function User(props) {
@@ -11,7 +11,6 @@ function User(props) {
         match,
     } = props;
 
-    const accessKey = '0KUYkYxvvkLzXiKIQE8LN0ED7_mEal1xnoP4EXu9YeA'
     const user = useSelector(state => state.user.profile);
     const userPhoto = useSelector(state => state.user.list);
     const id = match.params.id;
@@ -22,11 +21,8 @@ function User(props) {
         getUserProfile()
         getUserPhoto()
     }, [])
-    const getUserProfile = () => userActions.getUserProfile(id,{
-        client_id: accessKey,
-    });
+    const getUserProfile = () => userActions.getUserProfile(id,{});
     const getUserPhoto = () => userActions.fetchUserPhoto(id,{
-        client_id: accessKey,
         per_page: 5,
     });
 
@@ -37,7 +33,7 @@ function User(props) {
                   query={query}
                   description={description}
           />
-          <List photo={userPhoto}/>
+          <PhotoList photo={userPhoto}/>
       </Container>
   )
 }

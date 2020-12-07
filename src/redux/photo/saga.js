@@ -16,6 +16,16 @@ export default function* () {
             yield put(AppAction.Creators.updateState({isLoading:false}));
         }),
 
+        takeLatest(Action.Types.FETCH_PHOTO_BY_ID, function* ({payload}) {
+            const result = yield call(Api.fetchPhotoById, payload)
+            console.log('@@result',result);
+            if (result?.data) {
+                yield put(Action.Creators.updateState({
+                    popupPhoto: result.data,
+                }))
+            }
+        }),
+
         takeLatest(Action.Types.SEARCH_PHOTOS, function* ({payload}) {
             yield put(AppAction.Creators.updateState({isLoading:true}));
             const result = yield call(Api.searchPhoto, payload);

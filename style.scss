@@ -1,0 +1,27 @@
+@mixin screen-lg {
+  @media screen and (max-width: 1200px){
+    @content
+  }
+}
+
+@mixin screen-md {
+  @media screen and (max-width: 768px){
+    @content
+  }
+}
+
+@mixin flexCenter {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+
+.box {
+  background: #ddd;
+  font-size: 80px;
+  height: 600px;
+  @include flexCenter;
+  @include screen-md {
+
+  }
+}

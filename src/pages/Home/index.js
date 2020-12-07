@@ -2,7 +2,6 @@ import React from 'react';
 import styled from "styled-components";
 import Visual from "./Visual";
 import Photo from "./Photo";
-import TopicsNav from "../../components/Header/TopicsNav";
 
 function index(props) {
 
@@ -10,12 +9,8 @@ function index(props) {
 
     } = props;
 
-
-
-
   return (
       <Container>
-          <TopicsNav/>
           <Visual/>
           <Photo/>
       </Container>

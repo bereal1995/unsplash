@@ -4,13 +4,13 @@ import styled from "styled-components";
 function Visual(props) {
 
     const {
-        query,
+        title,
     } = props;
 
   return (
       <Container>
           <TitleContainer>
-              <h2>{query}</h2>
+              <h2>{title}</h2>
           </TitleContainer>
       </Container>
   )

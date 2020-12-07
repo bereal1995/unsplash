@@ -6,6 +6,7 @@ import {Provider} from 'react-redux';
 import store from "./redux/store";
 import History from "./lib/History";
 
+
 ReactDOM.render(
   <React.StrictMode>
       <Provider store={store}>
@@ -14,7 +15,7 @@ ReactDOM.render(
           </Router>
       </Provider>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById('root'),
 );
 
 

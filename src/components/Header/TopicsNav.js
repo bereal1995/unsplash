@@ -9,19 +9,15 @@ function TopicsNav(props) {
 
     const {
         location,
+        headerList = [],
     } = props;
     
-    const accessKey = '0KUYkYxvvkLzXiKIQE8LN0ED7_mEal1xnoP4EXu9YeA';
-    const topic = useSelector(state => state.topic);
 
-    useEffect( () => {
-        getTopicList()
-    },[])
-
-    const getTopicList = () => topicActions.fetchTopics({
-        client_id: accessKey,
-        per_page: 21,
-    })
+    const topicTitle = (id) => {
+        topicActions.updateState({
+            clickTitle: id,
+        })
+    }
 
   return (
       <Container>
@@ -29,10 +25,11 @@ function TopicsNav(props) {
               <TopicItem className={cn({isActive: location.pathname === '/'})} to={'/'}>Editorial</TopicItem>
               <span className={'button_bar'}/>
               {
-                  topic.headerList.map( (item, i) => (
+                  headerList.map( (item, i) => (
                       <TopicItem key={i}
                                  to={`/topic/${item.slug}`}
                                  className={cn({isActive: location.pathname.startsWith(`/topic/${item.slug}`)})}
+                                 onClick={()=> topicTitle(item.title)}
                       >{item.title}</TopicItem>
                   ))
               }
@@ -57,6 +54,7 @@ const Topic = styled.div`
     display:flex;
     align-items: center;
     height: 100%;
+    overflow: auto;
 `;
 
 const TopicItem = styled(Link)`
