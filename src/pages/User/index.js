@@ -1,46 +1,21 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import styled from "styled-components";
-import {useSelector} from "react-redux";
-import {userActions} from "../../redux/ActionCreators";
-import PhotoList from "../../components/Photo/PhotoList";
-import Visual from "./Visual";
+import UserContainer from "../../containers/UserContainer";
 
 function User(props) {
 
     const {
-        match,
+
     } = props;
 
-    const user = useSelector(state => state.user.profile);
-    const userPhoto = useSelector(state => state.user.list);
-    const id = match.params.id;
-    const query = user.name;
-    const profileImg = user?.profile_image?.large;
-    const description = user?.bio;
-    useEffect( () => {
-        getUserProfile()
-        getUserPhoto()
-    }, [])
-    const getUserProfile = () => userActions.getUserProfile(id,{});
-    const getUserPhoto = () => userActions.fetchUserPhoto(id,{
-        per_page: 5,
-    });
-
-
-    return (
+  return (
       <Container>
-          <Visual profileImg={profileImg}
-                  query={query}
-                  description={description}
-          />
-          <PhotoList photo={userPhoto}/>
+          <UserContainer/>
       </Container>
   )
 }
-
 const Container = styled.div`
-  max-width: 1320px;
-  margin: 0 auto;
+
 `;
 
 

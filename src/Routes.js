@@ -5,7 +5,7 @@ import Brands from "./pages/Brands";
 import Explore from "./pages/Explore";
 import Search from "./pages/Search";
 import Topic from "./containers/TopicContainer";
-import User from "./pages/User";
+import User from "./containers/UserContainer";
 import PhotoPopupContainer from "./containers/PhotoPopupContainer";
 
 function Routes() {
