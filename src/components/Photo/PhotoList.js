@@ -2,6 +2,7 @@ import React, {useEffect} from 'react';
 import styled from "styled-components";
 import PhotoCard from "./PhotoCard";
 import {photoActions} from "../../redux/ActionCreators";
+import {pxToRem} from "../../lib/Styled";
 
 function PhotoList(props) {
 
@@ -36,7 +37,7 @@ function PhotoList(props) {
   )
 }
 const Container = styled.div`
-  max-width: 1320px;
+  max-width: ${pxToRem(1320)};
   margin: 0 auto;
 `;
 
@@ -47,7 +48,7 @@ const Row = styled.div`
 
 const Col = styled.div`
     width: 33.3%;
-    padding: 12px;
+    padding: ${pxToRem(12)};
 `;
 
 export default PhotoList;

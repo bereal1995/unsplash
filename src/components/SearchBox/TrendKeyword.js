@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from "styled-components";
+import {pxToRem} from "../../lib/Styled";
 
 function TrendKeyword(props) {
 
@@ -22,11 +23,11 @@ function TrendKeyword(props) {
 }
 const Container = styled.div`
   display:flex;
-  margin-top: 16px;
-  font-size: 15px;
+  margin-top: ${pxToRem(16)};
+  font-size: ${pxToRem(15)};
   line-height: 1.6;
   span{
-    margin-right: 4px;
+    margin-right: ${pxToRem(4)};
   }
   ul{
     display:flex;

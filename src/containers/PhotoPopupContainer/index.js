@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import ReactDOM from 'react-dom';
 import styled from "styled-components";
 import {useSelector} from "react-redux";
-import {collectionActions, photoActions, userActions} from "../../redux/ActionCreators";
+import {collectionActions, photoActions} from "../../redux/ActionCreators";
 import PhotoPopup from "../../components/PhotoPopup";
 
 function PhotoPopupContainer(props) {
@@ -11,14 +11,12 @@ function PhotoPopupContainer(props) {
     } = props;
 
     const photo = useSelector(state => state.photo);
-    const userPhoto = useSelector(state => state.user.list);
     useEffect( () => {
         if (photo.popupId) {
             photoActions.fetchPhotoById(photo.popupId)
-            getPopupPhotoList()
+            photoActions.relatedPhotos(photo.popupId)
         }
     }, [photo.popupId])
-    const getPopupPhotoList = () => collectionActions.getRelatedList(photo.popupId, {})
 
 
 
@@ -26,7 +24,7 @@ function PhotoPopupContainer(props) {
 
   return (
       ReactDOM.createPortal(<PhotoPopup popupImg={photo?.popupPhoto?.urls?.regular}
-                                        userPhoto={userPhoto}
+                                        userPhoto={photo?.relatedPhotos}
           />,
           document.getElementById('photo-popup'))
   )

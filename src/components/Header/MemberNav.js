@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from "styled-components";
 import {navigate} from "../../lib/History";
+import {pxToRem} from "../../lib/Styled";
 
 function MemberNav(props) {
 
@@ -24,14 +25,14 @@ const Container = styled.div`
   transition: all .1s;
   a {
       display: inline-block;
-      height: 32px;
-      padding: 0 11px;
-      line-height: 32px;
+      height: ${pxToRem(32)};
+      padding: 0 ${pxToRem(11)};
+      line-height: ${pxToRem(32)};
   }
   .Login_join {
     background: #3cb46e;
     color: #fff;
-    border-radius: 4px;
+    border-radius: ${pxToRem(4)};
     &:hover {
       color: #fff;
       background: #37a866;
@@ -45,8 +46,8 @@ const Container = styled.div`
 
 const SubmitButton = styled.a`
   border: 1px solid #d1d1d1;
-  border-radius: 4px;
-  margin-right: 48px;
+  border-radius: ${pxToRem(4)};
+  margin-right: ${pxToRem(48)};
   &:hover {
     border-color: #111;
   }
@@ -54,7 +55,7 @@ const SubmitButton = styled.a`
 
 const LoginContainer = styled.div`
     a {
-      margin-right: 14px;
+      margin-right: ${pxToRem(14)};
     }
 `;
 

@@ -4,6 +4,7 @@ import Logo from "./Logo";
 import SearchBox from "../SearchBox";
 import MemberNav from "./MemberNav";
 import GnbMenu from "./GnbMenu";
+import {pxToRem} from "../../lib/Styled";
 
 function Gnb(props) {
 
@@ -20,12 +21,12 @@ function Gnb(props) {
   )
 }
 const Container = styled.div`
-  padding: 0 20px;
+  padding: 0 ${pxToRem(20)};
   display:flex;
   align-items: center;
   justify-content: space-between;
-  height: 62px;
-  font-size: 14px;
+  height: ${pxToRem(62)};
+  font-size: ${pxToRem(14)};
   font-weight: 500;
   
   a {
@@ -36,7 +37,6 @@ const Container = styled.div`
           color: #111;
         }
   }
-  
 `;
 
 

@@ -4,6 +4,7 @@ import {Link, withRouter} from "react-router-dom";
 import cn from 'classnames'
 import {topicActions} from "../../redux/ActionCreators";
 import {useSelector} from "react-redux";
+import {pxToRem} from "../../lib/Styled";
 
 function TopicsNav(props) {
 
@@ -41,9 +42,9 @@ function TopicsNav(props) {
 const Container = styled.div`
   overflow: hidden;
   width: 100%;
-  height: 56px;
-  box-shadow: 0px 4px 4px rgba(0,0,0,.4);
-  font-size: 15px;
+  height: ${pxToRem(56)};
+  box-shadow: 0px ${pxToRem(4)} ${pxToRem(4)} rgba(0,0,0,.4);
+  font-size: ${pxToRem(15)};
   font-weight: 400;
   .button_bar{
     display:table;

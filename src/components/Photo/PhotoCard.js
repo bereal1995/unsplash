@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from "styled-components";
 import {navigate} from "../../lib/History";
+import {pxToRem} from "../../lib/Styled";
 
 function PhotoCard(props) {
 
@@ -14,11 +15,11 @@ function PhotoCard(props) {
     } = props;
 
     return (
-        <Container onClick={onClick}>
+        <Container>
             <Thumb>
                 <img src={imgUrl}/>
             </Thumb>
-            <TextContainer>
+            <TextContainer onClick={onClick}>
                 <TextContainerTop>
                     <Likes className={'photo_click_box'}>
                         <svg width="32" height="32" className="BWSrD" version="1.1" viewBox="0 0 32 32" aria-hidden="false">
@@ -54,20 +55,20 @@ const Container = styled.div`
     position: relative;
     transition: all .5s;
     width: 100%;
-    height: 400px;
+    height: ${pxToRem(400)};
     .photo_click_box{
         background-color: hsla(0,0%,100%,.9);
         border-radius: 4px;
         border: 1px solid transparent;
         box-shadow: 0 1px 2px rgba(0,0,0,.06);
-        height: 32px;
-        padding: 0 11px;
-        margin-left: 8px;
-        font-size: 14px;
-        line-height: 30px;
+        height: ${pxToRem(32)};
+        padding: 0 ${pxToRem(11)};
+        margin-left: ${pxToRem(8)};
+        font-size: ${pxToRem(14)};
+        line-height: ${pxToRem(30)};
         opacity: .7;
         svg{
-          width: 16px;
+          width: ${pxToRem(16)};
           color: #767676;
         }
     }
@@ -93,7 +94,7 @@ const TextContainer = styled.div`
     flex-direction: column;
     align-items: flex-start;
     justify-content: space-between;
-    padding: 20px;
+    padding: ${pxToRem(20)};
     background: rgba(0,0,0,.2);
     opacity: 0;
     &:hover{

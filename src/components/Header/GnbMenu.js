@@ -2,6 +2,7 @@ import React from 'react';
 import styled from "styled-components";
 import {Link, withRouter} from "react-router-dom";
 import cn from 'classnames'
+import {pxToRem} from "../../lib/Styled";
 
 
 function GnbMenu(props) {
@@ -26,7 +27,7 @@ function GnbMenu(props) {
   )
 }
 const Container = styled.div`
-  padding: 0 36px;
+  padding: 0 ${pxToRem(36)};
 
 `;
 
@@ -38,11 +39,11 @@ const MenuItem = styled(Link)`
     display:flex;
     align-items: center;
     justify-content: center;
-    padding: 20px 12px;
+    padding: ${pxToRem(20)} ${pxToRem(12)};
     cursor: pointer;
     fill: currentColor;
     span {
-        font-size: 10px;
+        font-size: ${pxToRem(18)};
         position: relative;
         top: -10px;
         background: linear-gradient(94deg,#ff2a2a,#7074ff);

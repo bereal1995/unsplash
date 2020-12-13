@@ -5,6 +5,7 @@ const Api = {
     fetchPhoto: (data) => FetchJson.get('/photos',data),
     fetchPhotoById: (id) => FetchJson.get(`/photos/${id}`),
     searchPhoto: (data) => FetchJson.get('/search/photos',data),
+    relatedPhotos: (id) => FetchJson.get(`/photos/${id}/related`),
 
     fetchTopics: (data) => FetchJson.get('/topics',data),
     searchTopics: (id,data) => FetchJson.get(`/topics/${id}/photos/`,data),

@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from "styled-components";
 import {navigate} from "../../lib/History";
+import {pxToRem} from "../../lib/Styled";
 
 function Logo(props) {
 
@@ -28,22 +29,22 @@ function Logo(props) {
 const Container = styled.a`
     display:flex;
     align-items: center;
-    margin-right: 18px;
+    margin-right: ${pxToRem(18)};
     svg{
-      width: 32px;
-      height: 32px;
+      width: ${pxToRem(32)};
+      height: ${pxToRem(32)};
     }
 `;
 
 const Text = styled.div`
-    margin-left: 12px;
+    margin-left: ${pxToRem(12)};
     strong{
-      font-size: 15px;
+      font-size: ${pxToRem(15)};
       line-height: 1;
     }
     p {
-      margin-top: 2px;
-      font-size: 13px;
+      margin-top: ${pxToRem(2)};
+      font-size: ${pxToRem(13)};
       line-height: 1;
     }
 `;

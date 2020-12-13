@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from "styled-components";
 import Skeleton from "react-loading-skeleton";
+import {pxToRem} from "../../lib/Styled";
 
 function Spinner(props) {
 
@@ -34,9 +35,9 @@ const Container = styled.div`
   
   .react-loading-skeleton {
     display:block;
-    width: 500px;
-    height: 20px;
-    margin-top: 10px;
+    width: ${pxToRem(500)};
+    height: ${pxToRem(20)};
+    margin-top: ${pxToRem(10)};
     
   }
 `;

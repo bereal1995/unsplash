@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import styled from "styled-components";
 import cn from 'classnames'
 import {navigate} from "../../lib/History";
+import {pxToRem} from "../../lib/Styled";
 
 function SearchBox(props) {
 
@@ -44,16 +45,16 @@ const Label = styled.label`
     display:flex;
     width: 100%;
     align-items: center;
-    padding: 0 14px;
+    padding: 0 ${pxToRem(14)};
     background: #eee;
     .round & {
-      height: 38px;
-      border-radius: 25px;
+      height: ${pxToRem(38)};
+      border-radius: ${pxToRem(25)};
       border: 1px solid #ddd;  
     }
     .square & {
-      height: 54px;
-      border-radius: 4px;
+      height: ${pxToRem(54)};
+      border-radius: ${pxToRem(4)};
     }
 `;
 
@@ -63,7 +64,7 @@ const Input = styled.input`
     height: 100%;
     outline: 0;
     border: 0;
-    font-size: 14px;
+    font-size: ${pxToRem(14)};
     color: #333;
     background: none;
     
@@ -73,12 +74,12 @@ const IconSearch = styled.button`
   border: 0;
   background: none;
   outline: 0;
-  width: 20px;
-  height: 20px;
+  width: ${pxToRem(20)};
+  height: ${pxToRem(20)};
   display:flex;
   align-items: center;
   justify-content: center;
-  margin-right: 10px;
+  margin-right: ${pxToRem(10)};
 `;
 
 export default SearchBox;

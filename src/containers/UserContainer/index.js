@@ -3,7 +3,7 @@ import styled from "styled-components";
 import {useSelector} from "react-redux";
 import {userActions} from "../../redux/ActionCreators";
 import PhotoList from "../../components/Photo/PhotoList";
-import Visual from "./Visual";
+import Visual from "../../pages/User/Visual";
 
 function UserContainer(props) {
 

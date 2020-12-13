@@ -18,7 +18,6 @@ export default function* () {
 
         takeLatest(Action.Types.FETCH_PHOTO_BY_ID, function* ({payload}) {
             const result = yield call(Api.fetchPhotoById, payload)
-            console.log('@@result',result);
             if (result?.data) {
                 yield put(Action.Creators.updateState({
                     popupPhoto: result.data,
@@ -32,6 +31,18 @@ export default function* () {
             if (result.data.results) {
                 yield put(Action.Creators.updateState({
                     search: result.data
+                }))
+            }
+            yield put(AppAction.Creators.updateState({isLoading:false}));
+
+        }),
+
+        takeLatest(Action.Types.RELATED_PHOTOS, function* ({id}) {
+            yield put(AppAction.Creators.updateState({isLoading:true}));
+            const result = yield call(Api.relatedPhotos, id);
+            if (result?.data?.results) {
+                yield put(Action.Creators.updateState({
+                    relatedPhotos: result.data.results,
                 }))
             }
             yield put(AppAction.Creators.updateState({isLoading:false}));

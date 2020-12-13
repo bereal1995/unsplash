@@ -40,11 +40,4 @@ export const GlobalStyle = createGlobalStyle`
     display: none;
   }
   
-  #photo-popup {
-    > div {
-        
-    }
-   
-  }
-  
 `;

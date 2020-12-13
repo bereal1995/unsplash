@@ -3,7 +3,7 @@ import styled from "styled-components";
 import {useSelector} from "react-redux";
 import {topicActions} from "../../redux/ActionCreators";
 import PhotoList from "../../components/Photo/PhotoList";
-import Visual from "./Visual";
+import Visual from "../../pages/Topic/Visual";
 
 function TopicContainer(props) {
 

@@ -7,6 +7,7 @@ const initialState = {
     },
     popupId: undefined,
     popupPhoto: [],
+    relatedPhotos: [],
 }
 
 export const Action = createActions({
@@ -15,6 +16,7 @@ export const Action = createActions({
     fetchPhotos: ['payload'],
     fetchPhotoById: ['payload'],
     photoPopup: ['payload'],
+    relatedPhotos: ['id','payload'],
 }, {
     prefix: 'PHOTO/'
 });

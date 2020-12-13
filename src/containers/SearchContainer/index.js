@@ -3,7 +3,7 @@ import styled from "styled-components";
 import {useSelector} from "react-redux";
 import {photoActions} from "../../redux/ActionCreators";
 import PhotoList from "../../components/Photo/PhotoList";
-import Visual from "./Visual";
+import Visual from "../../pages/Search/Visual";
 
 function SearchContainer(props) {
 

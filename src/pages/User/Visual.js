@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from "styled-components";
+import {pxToRem} from "../../lib/Styled";
 
 function Visual(props) {
 
@@ -29,14 +30,14 @@ const Container = styled.div`
 
 const VisualContainer = styled.div`
     display:flex;
-    padding: 72px 12px;
+    padding: ${pxToRem(72)} ${pxToRem(12)};
 `;
 
 const ProtileImg = styled.div`
     width: 33.3%;
     display:flex;
     justify-content: flex-end;
-    margin-right: 32px;
+    margin-right: ${pxToRem(32)};
     img{
       display:block;
       border-radius: 50%;
@@ -49,8 +50,8 @@ const ProtileImg = styled.div`
 const ProfileText = styled.div`
     width: 66.6%;
     h2 {
-      padding: 0 0 16px 16px;
-      font-size: 46px;
+      padding: 0 0 ${pxToRem(16)} ${pxToRem(16)};
+      font-size: ${pxToRem(46)};
       line-height: 1.2;
       text-transform: capitalize;
     }
@@ -58,8 +59,8 @@ const ProfileText = styled.div`
 
 const Desc = styled.div`
     max-width: 70%;
-    padding: 0 0 16px 16px;
-    font-size: 15px;
+    padding: 0 0 ${pxToRem(16)} ${pxToRem(16)};
+    font-size: ${pxToRem(15)};
     line-height: 1.6;
 `;
 

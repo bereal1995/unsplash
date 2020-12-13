@@ -1,28 +1,30 @@
 import React from 'react';
 import styled from "styled-components";
+import {pxToRem} from "../../lib/Styled";
 
 function Visual(props) {
 
     const {
-        query,
+        title,
     } = props;
 
   return (
       <Container>
           <TitleContainer>
-              <h2>{query}</h2>
+              <h2>{title}</h2>
           </TitleContainer>
       </Container>
   )
 }
 const Container = styled.div`
-
+  max-width: 1320px;
+  margin: 0 auto;
 `;
 
 const TitleContainer = styled.div`
-    padding: 72px 12px;
+    padding: ${pxToRem(72)} ${pxToRem(12)};
     h2 {
-      font-size: 46px;
+      font-size: ${pxToRem(46)};
       line-height: 1.2;
       text-transform: capitalize;
     }
