@@ -6,6 +6,7 @@ const initialState = {
         results: [],
     },
     popupId: undefined,
+    popupUsername: undefined,
     popupPhoto: [],
     relatedPhotos: [],
 }

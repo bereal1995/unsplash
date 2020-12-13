@@ -19,7 +19,9 @@ function PhotoCard(props) {
             <Thumb>
                 <img src={imgUrl}/>
             </Thumb>
-            <TextContainer onClick={onClick}>
+            <TextContainer>
+                <ClickArea onClick={onClick}/>
+
                 <TextContainerTop>
                     <Likes className={'photo_click_box'}>
                         <svg width="32" height="32" className="BWSrD" version="1.1" viewBox="0 0 32 32" aria-hidden="false">
@@ -103,6 +105,7 @@ const TextContainer = styled.div`
 `;
 
 const TextContainerTop = styled.div`
+  position: relative;
   width: 100%;
   display:flex;
   justify-content: flex-end;
@@ -110,11 +113,20 @@ const TextContainerTop = styled.div`
 `;
 
 const TextContainerBottom = styled.div`
+  position: relative;
   display:flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
   cursor: pointer;
+`;
+
+const ClickArea = styled.div`
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
 `;
 
 const Likes = styled.div`

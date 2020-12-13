@@ -10,9 +10,10 @@ function PhotoList(props) {
         photo
     } = props;
 
-    const showPopup = (id) => {
+    const showPopup = (id, username) => {
         photoActions.updateState({
             popupId: id,
+            popupUsername: username,
         })
     }
 
@@ -27,7 +28,7 @@ function PhotoList(props) {
                                  username={item.user.username}
                                  profileImg={item.user.profile_image.small}
                                  downloadImg={item.links.download}
-                                 onClick={() => showPopup(item.id)}
+                                 onClick={() => showPopup(item.id, item.user.username)}
                       />
                   </Col>
               ))

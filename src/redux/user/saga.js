@@ -16,9 +16,9 @@ export default function* () {
             }
             yield put(AppAction.Creators.updateState({isLoading:false}));
         }),
-        takeLatest(Action.Types.GET_USER_PROFILE, function* ({id, payload}) {
+        takeLatest(Action.Types.GET_USER_PROFILE, function* ({id}) {
             yield put(AppAction.Creators.updateState({isLoading:true}));
-            const result = yield call(Api.getUserProfile, id, payload)
+            const result = yield call(Api.getUserProfile, id)
             console.log('@@result',result);
             if (result?.data) {
                 yield put(Action.Creators.updateState({

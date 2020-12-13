@@ -8,7 +8,7 @@ const initialState = {
 export const Action = createActions({
     updateState: ['payload'],
     fetchUserPhoto: ['id','payload'],
-    getUserProfile: ['id','payload'],
+    getUserProfile: ['id'],
 }, {
     prefix: 'USER/'
 });

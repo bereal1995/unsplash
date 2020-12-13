@@ -21,7 +21,7 @@ function UserContainer(props) {
         getUserProfile()
         getUserPhoto()
     }, [])
-    const getUserProfile = () => userActions.getUserProfile(id,{});
+    const getUserProfile = () => userActions.getUserProfile(id);
     const getUserPhoto = () => userActions.fetchUserPhoto(id,{
         per_page: 5,
     });

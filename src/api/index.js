@@ -11,7 +11,7 @@ const Api = {
     searchTopics: (id,data) => FetchJson.get(`/topics/${id}/photos/`,data),
 
     fetchUserPhoto: (id,data) => FetchJson.get(`/users/${id}/photos/`,data),
-    getUserProfile: (id,data) => FetchJson.get(`/users/${id}/`,data),
+    getUserProfile: (id) => FetchJson.get(`/users/${id}/`),
 
     getRelatedCollection: (id,data) => FetchJson.get(`/collections/${id}/related/`,data),
 }

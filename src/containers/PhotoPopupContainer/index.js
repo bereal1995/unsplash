@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import ReactDOM from 'react-dom';
 import styled from "styled-components";
 import {useSelector} from "react-redux";
-import {collectionActions, photoActions} from "../../redux/ActionCreators";
+import {collectionActions, photoActions, userActions} from "../../redux/ActionCreators";
 import PhotoPopup from "../../components/PhotoPopup";
 
 function PhotoPopupContainer(props) {
@@ -12,6 +12,8 @@ function PhotoPopupContainer(props) {
 
     const photo = useSelector(state => state.photo);
     useEffect( () => {
+        userActions.getUserProfile(photo.popupUsername)
+
         if (photo.popupId) {
             photoActions.fetchPhotoById(photo.popupId)
             photoActions.relatedPhotos(photo.popupId)

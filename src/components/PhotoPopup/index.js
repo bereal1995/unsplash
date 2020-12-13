@@ -4,6 +4,7 @@ import {photoActions} from "../../redux/ActionCreators";
 import {useSelector} from "react-redux";
 import PhotoList from "../Photo/PhotoList";
 import {pxToRem} from "../../lib/Styled";
+import Title from "./Title";
 
 function PhotoPopup(props) {
 
@@ -25,6 +26,7 @@ function PhotoPopup(props) {
   return (
       <Container onClick={() => popupOff()}>
           <ContentContainer>
+              <Title/>
               <Thumb>
                   <img src={popupImg} alt=""/>
               </Thumb>
@@ -61,8 +63,9 @@ const Thumb = styled.div`
     max-width: ${pxToRem(1200)};
     padding: ${pxToRem(10)};
     margin: 0 auto;
+    text-align: center;
     img {
-      width: 100%;
+      width: auto;
       height: 50vw;
       object-fit: cover;
     }
