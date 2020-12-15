@@ -14,6 +14,7 @@ function HeaderContainer(props) {
 
     const pathname = location.pathname;
     const withTopicsNav = pathname === '/' || pathname.startsWith('/topic')
+    const withHeader = pathname === '/login' || pathname === '/join'
 
     const {headerList} = useSelector(state => state.topic);
 
@@ -25,9 +26,11 @@ function HeaderContainer(props) {
         per_page: 21,
     })
 
+    if (pathname === '/login' || pathname === '/join') return null;
+
   return (
       <>
-          <Header/>
+          { !withHeader && <Header/>}
           {withTopicsNav && <TopicsNav headerList={headerList}/>}
       </>
   )

@@ -6,6 +6,7 @@ import Spinner from "./components/Spinner";
 import HeaderContainer from "./containers/HeaderContainer";
 import {GlobalStyle} from "./lib/Styled";
 import PhotoPopupContainer from "./containers/PhotoPopupContainer";
+import {Button} from "./components/Button/Button.Styled";
 
 
 

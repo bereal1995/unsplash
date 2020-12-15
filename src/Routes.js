@@ -7,6 +7,8 @@ import Search from "./pages/Search";
 import Topic from "./containers/TopicContainer";
 import User from "./containers/UserContainer";
 import PhotoPopupContainer from "./containers/PhotoPopupContainer";
+import Login from "./pages/Login";
+import Join from "./pages/Join";
 
 function Routes() {
 
@@ -19,6 +21,8 @@ function Routes() {
           <Route path={"/search/:id"} component={Search}/>
           <Route path={"/topic/:id"} component={Topic}/>
           <Route path={"/user/:id"} component={User}/>
+          <Route path={"/login"} component={Login}/>
+          <Route path={"/join"} component={Join}/>
       </Switch>
   )
 }
