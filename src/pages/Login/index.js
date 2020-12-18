@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from "styled-components";
+import {FormButton} from "../../components/Button/Button.Styled";
+import {navigate} from "../../lib/History";
 
 function Login(props) {
 
@@ -10,13 +12,13 @@ function Login(props) {
   return (
       <Container>
           <ContentContainer>
-              <Logo className={'login_form'}>
+              <Logo onClick={() => navigate('/')}>
                   <img className="login__logo"
                        src="https://unsplash.com/assets/core/logo-black-df2168ed0c378fa5506b1816e75eb379d06cfcd0af01e07a2eb813ae9b5d7405.svg"/>
                   <h1>Login</h1>
                   <p>Welcome back.</p>
               </Logo>
-              <SocialButton className={'login_form form-common'}>
+              <SocialButton className={'login_form'}>
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="icon">
                       <path
                           d="M21 12.1c0-5-4-9-9-9s-9 4-9 9c0 4.5 3.3 8.2 7.6 8.9v-6.3H8.3v-2.6h2.3v-2c0-2.2 1.4-3.5 3.4-3.5 1 0 2 .2 2 .2V9h-1c-1.1 0-1.4.7-1.4 1.4v1.7H16l-.4 2.6h-2.1V21c4.2-.7 7.5-4.4 7.5-8.9"></path>
@@ -34,7 +36,7 @@ function Login(props) {
                           <label>Password</label>
                           <span>Forgot your password?</span>
                       </div>
-                      <input type="password" className={'input_able_btn form-common'}/>
+                      <input type="password" className={'input_able_btn'}/>
                   </div>
                   <div className="login_form">
                       <input type="submit" value={'Login'} className={'input_disable_btn form-common'}/>
@@ -61,14 +63,6 @@ const Container = styled.div`
   margin: 0 auto;
   text-align: center;
   
-  .form-common{
-    border-radius: 4px;
-    font-size: 15px;
-    line-height: 1.6;
-    padding: 9px 18px;
-    cursor: pointer;
-    border: 1px solid transparent;
-  }
 `;
 
 const ContentContainer = styled.div`
@@ -98,6 +92,7 @@ const Logo = styled.div`
       font-size: 15px;
       margin-bottom: 32px;
     }
+    ${FormButton}
 `;
 
 const SocialButton = styled.div`
@@ -112,7 +107,7 @@ const SocialButton = styled.div`
       fill: #fff;
     }
     color: #fff;
-    
+    ${FormButton}
 `;
 
 const LoginContainer = styled.div`
@@ -123,6 +118,7 @@ const LoginContainer = styled.div`
     }
     input{
       width: 100%;
+      ${FormButton}
     }
     .input_able_btn{
       width: 100%;

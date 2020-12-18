@@ -3,6 +3,7 @@ import styled from "styled-components";
 import PhotoCard from "./PhotoCard";
 import {photoActions} from "../../redux/ActionCreators";
 import {pxToRem} from "../../lib/Styled";
+import {useSelector} from "react-redux";
 
 function PhotoList(props) {
 

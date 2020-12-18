@@ -22,7 +22,7 @@ function PhotoPopup(props) {
             })
         }
     }
-
+    
   return (
       <Container onClick={() => popupOff()}>
           <ContentContainer>

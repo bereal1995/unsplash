@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, {css} from 'styled-components'
 import {pxToRem} from "../../lib/Styled";
 
 export const Button = styled.div`
@@ -21,4 +21,13 @@ export const Button = styled.div`
       opacity: 1;
     }
         
+`;
+
+export const FormButton = css`
+    border-radius: 4px;
+    font-size: 15px;
+    line-height: 1.6;
+    padding: 9px 18px;
+    cursor: pointer;
+    border: 1px solid transparent;
 `;

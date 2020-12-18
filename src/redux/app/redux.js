@@ -8,6 +8,7 @@ const initialState = {
     },
     users: [],
     isLoading: false,
+    menuPopup: false,
 }
 
 export const Action = createActions({
