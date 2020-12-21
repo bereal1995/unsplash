@@ -12,7 +12,7 @@ function UserContainer(props) {
     } = props;
 
     const user = useSelector(state => state.user.profile);
-    const userPhoto = useSelector(state => state.user.list);
+    const userPhotos = useSelector(state => state.user.list);
     const id = match.params.id;
     const query = user.name;
     const profileImg = user?.profile_image?.large;
@@ -33,7 +33,7 @@ function UserContainer(props) {
                   query={query}
                   description={description}
           />
-          <PhotoList photo={userPhoto}/>
+          <PhotoList photos={userPhotos}/>
       </Container>
   )
 }

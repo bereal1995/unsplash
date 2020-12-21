@@ -8,7 +8,8 @@ const Api = {
     relatedPhotos: (id) => FetchJson.get(`/photos/${id}/related`),
 
     fetchTopics: (data) => FetchJson.get('/topics',data),
-    searchTopics: (id,data) => FetchJson.get(`/topics/${id}/photos/`,data),
+    getTopicById: (id) => FetchJson.get(`/topics/${id}/`),
+    getTopicPhotosById: (id,data) => FetchJson.get(`/topics/${id}/photos/`,data),
 
     fetchUserPhoto: (id,data) => FetchJson.get(`/users/${id}/photos/`,data),
     getUserProfile: (id) => FetchJson.get(`/users/${id}/`),

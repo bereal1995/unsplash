@@ -10,13 +10,13 @@ function PhotoPopup(props) {
 
     const {
         popupImg,
-        userPhoto,
+        userPhotos,
     } = props;
 
-    const photo = useSelector(state => state.photo);
+    const photos = useSelector(state => state.photo);
 
     const popupOff = () => {
-        if (photo.popupId) {
+        if (photos.popupId) {
             photoActions.updateState({
                 popupId: undefined
             })
@@ -31,7 +31,7 @@ function PhotoPopup(props) {
                   <img src={popupImg} alt=""/>
               </Thumb>
               <h4>Related Photos</h4>
-              <PhotoList photo={userPhoto}/>
+              <PhotoList photos={userPhotos}/>
           </ContentContainer>
       </Container>
   )

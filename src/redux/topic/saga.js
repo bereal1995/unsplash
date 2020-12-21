@@ -13,15 +13,18 @@ export default function* () {
                 }))
             }
         }),
-        takeLatest(Action.Types.SEARCH_TOPICS, function* ({id,payload}) {
-            yield put(AppAction.Creators.updateState({isLoading:true}));
-            const result = yield call(Api.searchTopics, id,payload)
-            if (result.data) {
+        takeLatest(Action.Types.GET_TOPIC_BY_ID, function* ({id,data}) {
+            const [topicTitle, topicPhotos] = yield all([
+                call(Api.getTopicById, id),
+                call(Api.getTopicPhotosById, id,data)
+            ])
+
+            if (topicTitle?.data && topicPhotos?.data) {
                 yield put(Action.Creators.updateState({
-                    list: result.data
+                    topicTitle: topicTitle.data,
+                    topicPhotos: topicPhotos.data
                 }))
             }
-            yield put(AppAction.Creators.updateState({isLoading:false}));
         }),
 
     ])

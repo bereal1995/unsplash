@@ -1,9 +1,7 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import styled from "styled-components";
 import {Link, withRouter} from "react-router-dom";
 import cn from 'classnames'
-import {topicActions} from "../../redux/ActionCreators";
-import {useSelector} from "react-redux";
 import {pxToRem} from "../../lib/Styled";
 
 function TopicsNav(props) {
@@ -13,13 +11,6 @@ function TopicsNav(props) {
         headerList = [],
     } = props;
     
-
-    const topicTitle = (id) => {
-        topicActions.updateState({
-            clickTitle: id,
-        })
-    }
-
   return (
       <Container>
           <Topic>
@@ -30,7 +21,6 @@ function TopicsNav(props) {
                       <TopicItem key={i}
                                  to={`/topic/${item.slug}`}
                                  className={cn({isActive: location.pathname.startsWith(`/topic/${item.slug}`)})}
-                                 onClick={()=> topicTitle(item.title)}
                       >{item.title}</TopicItem>
                   ))
               }

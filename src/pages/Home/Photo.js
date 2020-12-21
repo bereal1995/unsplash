@@ -10,7 +10,7 @@ function Photo(props) {
     
     } = props;
 
-    const photo = useSelector(state => state.photo);
+    const photos = useSelector(state => state.photo);
     useEffect( () => {
         getPhotoList()
     },[])
@@ -21,7 +21,7 @@ function Photo(props) {
 
   return (
       <Container>
-          <PhotoList photo={photo.list}/>
+          <PhotoList photos={photos.list}/>
       </Container>
   )
 }

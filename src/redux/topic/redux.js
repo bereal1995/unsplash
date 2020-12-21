@@ -2,14 +2,14 @@ import {createActions, createReducer} from "reduxsauce";
 
 const initialState = {
     headerList: [],
-    list: [],
-    clickTitle: undefined,
+    topicTitle: {},
+    topicPhotos: [],
 }
 
 export const Action = createActions({
     updateState: ['payload'],
     fetchTopics: ['payload'],
-    searchTopics: ['id','payload'],
+    getTopicById: ['id','data'],
 }, {
     prefix: 'TOPIC/'
 });

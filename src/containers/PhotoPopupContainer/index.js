@@ -37,7 +37,7 @@ function PhotoPopupContainer(props) {
 
     return (
       ReactDOM.createPortal(<PhotoPopup popupImg={photo?.popupPhoto?.urls?.regular}
-                                        userPhoto={photo?.relatedPhotos}
+                                        userPhotos={photo?.relatedPhotos}
           />,
           document.getElementById('photo-popup'))
   )

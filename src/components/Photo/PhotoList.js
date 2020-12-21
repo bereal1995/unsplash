@@ -1,14 +1,13 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import styled from "styled-components";
 import PhotoCard from "./PhotoCard";
 import {photoActions} from "../../redux/ActionCreators";
 import {pxToRem} from "../../lib/Styled";
-import {useSelector} from "react-redux";
 
 function PhotoList(props) {
 
     const {
-        photo
+        photos
     } = props;
 
     const showPopup = (id, username) => {
@@ -22,7 +21,7 @@ function PhotoList(props) {
       <Container>
           <Row>
           {
-              photo.map( (item, i) => (
+              photos.map( (item, i) => (
                   <Col key={i}>
                       <PhotoCard imgUrl={item.urls.regular}
                                  name={item.user.name}

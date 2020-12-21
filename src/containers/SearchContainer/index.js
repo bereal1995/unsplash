@@ -15,7 +15,7 @@ function SearchContainer(props) {
     useEffect( () => {
         getPhotoSearch()
     },[query])
-    const photo = useSelector(state => state.photo.search.results);
+    const photos = useSelector(state => state.photo.search.results);
     const getPhotoSearch = () => photoActions.searchPhotos({
         query,
         per_page: 5,
@@ -24,7 +24,7 @@ function SearchContainer(props) {
     return (
         <Container>
             <Visual query={query}/>
-            <PhotoList photo={photo}/>
+            <PhotoList photos={photos}/>
         </Container>
     )
 }

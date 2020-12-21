@@ -14,16 +14,16 @@ function TopicContainer(props) {
     const query = match.params.id.toLowerCase();
     const topic = useSelector(state => state.topic);
     useEffect( () => {
-        getTopic()
+        getTopicById()
     },[query])
-    const getTopic = () => topicActions.searchTopics(query,{
+    const getTopicById = () => topicActions.getTopicById(query,{
         per_page: 5,
     })
 
     return (
         <Container>
-            <Visual title={topic.clickTitle}/>
-            <PhotoList photo={topic.list}/>
+            <Visual title={topic.topicTitle.title}/>
+            <PhotoList photos={topic.topicPhotos}/>
         </Container>
     )
 }

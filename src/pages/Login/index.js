@@ -2,12 +2,22 @@ import React from 'react';
 import styled from "styled-components";
 import {FormButton} from "../../components/Button/Button.Styled";
 import {navigate} from "../../lib/History";
+import {useForm} from 'react-hook-form';
+import FormMessage from "../../components/Messasges/FormMessage";
 
 function Login(props) {
 
     const {
 
     } = props;
+
+    const {register, handleSubmit, errors} = useForm()
+
+    const onSubmit = data => {
+        console.log('@@data',data);
+    }
+    
+    console.log('@@errors',errors);
 
   return (
       <Container>
@@ -26,17 +36,34 @@ function Login(props) {
                   Login with Facebook
               </SocialButton>
               <p className={'horizon_line'}>OR</p>
-              <LoginContainer >
+              <LoginContainer onSubmit={handleSubmit(onSubmit)} noValidate>
                   <div className={'login_form'}>
-                      <label>Email</label>
-                      <input type="email" className={'input_able_btn form-common'}/>
+                      <label htmlFor={'email'}>Email</label>
+                      <input type="email"
+                             className={'input_able_btn form-common'}
+                             ref={register({
+                                 required: true,
+                                 validate: {
+                                     isEmail: (v) => false
+                                 }
+                             })}
+                             name={'email'}
+                             id={'email'}/>
+                      <FormMessage error={errors.email}/>
                   </div>
                   <div className={'login_form'}>
                       <div className="label_justify">
-                          <label>Password</label>
+                          <label htmlFor={'password'}>Password</label>
                           <span>Forgot your password?</span>
                       </div>
-                      <input type="password" className={'input_able_btn'}/>
+                      <input type="password"
+                             className={'input_able_btn'}
+                             ref={register({
+                                 required: true,
+                             })}
+                             name={'password'}
+                             id={'password'}/>
+                      <FormMessage error={errors.password}/>
                   </div>
                   <div className="login_form">
                       <input type="submit" value={'Login'} className={'input_disable_btn form-common'}/>
@@ -110,7 +137,7 @@ const SocialButton = styled.div`
     ${FormButton}
 `;
 
-const LoginContainer = styled.div`
+const LoginContainer = styled.form`
     label{
       display:block;
       text-align: left;
