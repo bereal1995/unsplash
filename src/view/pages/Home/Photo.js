@@ -18,9 +18,6 @@ function Photo(props) {
         per_page: 5,
     })
 
-    console.log('@@photos',photos);
-
-
   return (
       <Container>
           <PhotoList photos={photos.list}/>

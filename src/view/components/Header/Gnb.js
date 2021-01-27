@@ -7,9 +7,6 @@ import GnbMenu from "./GnbMenu";
 
 function Gnb(props) {
 
-    const {
-    } = props;
-
   return (
       <Container>
         <Logo withText={true}/>

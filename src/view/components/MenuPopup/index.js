@@ -2,11 +2,7 @@ import React from 'react';
 import styled from "styled-components";
 import {navigate} from "../../../lib/History";
 
-function MenuPopup(props) {
-
-    const {
-
-    } = props;
+function MenuPopup() {
 
   return (
       <Container>

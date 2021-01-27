@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from "styled-components";
-import {Link, withRouter} from "react-router-dom";
+import {withRouter} from "react-router-dom";
 import cn from 'classnames'
 import {useSelector} from "react-redux";
 import MenuPopup from "../MenuPopup";
@@ -27,7 +27,7 @@ function GnbMenu(props) {
                 window.location.href= 'https://unsplash.com/brands'
             }}>Explore</MenuItem>
             <MenuItem onClick={() => menuPopup()}>
-                <svg width="18" height="18" version="1.1" viewBox="0 0 32 32" aria-hidden="false"><path d="M7 15.5c0 1.9-1.6 3.5-3.5 3.5s-3.5-1.6-3.5-3.5 1.6-3.5 3.5-3.5 3.5 1.6 3.5 3.5zm21.5-3.5c-1.9 0-3.5 1.6-3.5 3.5s1.6 3.5 3.5 3.5 3.5-1.6 3.5-3.5-1.6-3.5-3.5-3.5zm-12.5 0c-1.9 0-3.5 1.6-3.5 3.5s1.6 3.5 3.5 3.5 3.5-1.6 3.5-3.5-1.6-3.5-3.5-3.5z"></path></svg>
+                <svg width="18" height="18" version="1.1" viewBox="0 0 32 32" aria-hidden="false"><path d="M7 15.5c0 1.9-1.6 3.5-3.5 3.5s-3.5-1.6-3.5-3.5 1.6-3.5 3.5-3.5 3.5 1.6 3.5 3.5zm21.5-3.5c-1.9 0-3.5 1.6-3.5 3.5s1.6 3.5 3.5 3.5 3.5-1.6 3.5-3.5-1.6-3.5-3.5-3.5zm-12.5 0c-1.9 0-3.5 1.6-3.5 3.5s1.6 3.5 3.5 3.5 3.5-1.6 3.5-3.5-1.6-3.5-3.5-3.5z"/></svg>
                 <MenuPopupContainer>
                     {app.menuPopup && <MenuPopup/>}
                 </MenuPopupContainer>

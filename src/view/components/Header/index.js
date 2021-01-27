@@ -1,13 +1,8 @@
 import React from 'react';
 import styled from "styled-components";
 import Gnb from "./Gnb";
-import TopicsNav from "./TopicsNav";
 
-function Header(props) {
-
-    const {
-
-    } = props;
+function Header() {
 
   return (
       <Container>
