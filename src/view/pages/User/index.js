@@ -2,11 +2,7 @@ import React from 'react';
 import styled from "styled-components";
 import UserContainer from "../../containers/UserContainer";
 
-function User(props) {
-
-    const {
-
-    } = props;
+function User() {
 
   return (
       <Container>

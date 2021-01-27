@@ -3,11 +3,7 @@ import styled from "styled-components";
 import PhotoCard from "./PhotoCard";
 import {photoActions} from "../../../redux/ActionCreators";
 
-function PhotoList(props) {
-
-    const {
-        photos
-    } = props;
+function PhotoList({photos}) {
 
     const showPopup = (id, username) => {
         photoActions.updateState({
@@ -15,6 +11,8 @@ function PhotoList(props) {
             popupUsername: username,
         })
     }
+
+    if (typeof photos[0] === 'undefined') return '검색결과가 없습니다.'
 
     return (
       <Container className={'photo-list'}>

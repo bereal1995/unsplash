@@ -3,11 +3,7 @@ import styled from "styled-components";
 import {useSelector} from "react-redux";
 import {navigate} from "../../../lib/History";
 
-function Title(props) {
-
-    const {
-
-    } = props;
+function Title() {
 
     const user = useSelector(state => state.user);
 

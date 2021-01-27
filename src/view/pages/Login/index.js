@@ -5,11 +5,7 @@ import {navigate} from "../../../lib/History";
 import {useForm} from 'react-hook-form';
 import FormMessage from "../../components/Messasges/FormMessage";
 
-function Login(props) {
-
-    const {
-
-    } = props;
+function Login() {
 
     const {register, handleSubmit, errors} = useForm()
 
@@ -24,14 +20,14 @@ function Login(props) {
           <ContentContainer>
               <Logo onClick={() => navigate('/')}>
                   <img className="login__logo"
-                       src="https://unsplash.com/assets/core/logo-black-df2168ed0c378fa5506b1816e75eb379d06cfcd0af01e07a2eb813ae9b5d7405.svg"/>
+                       src="https://unsplash.com/assets/core/logo-black-df2168ed0c378fa5506b1816e75eb379d06cfcd0af01e07a2eb813ae9b5d7405.svg" alt={'로고 이미지'}/>
                   <h1>Login</h1>
                   <p>Welcome back.</p>
               </Logo>
               <SocialButton className={'login_form'}>
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="icon">
                       <path
-                          d="M21 12.1c0-5-4-9-9-9s-9 4-9 9c0 4.5 3.3 8.2 7.6 8.9v-6.3H8.3v-2.6h2.3v-2c0-2.2 1.4-3.5 3.4-3.5 1 0 2 .2 2 .2V9h-1c-1.1 0-1.4.7-1.4 1.4v1.7H16l-.4 2.6h-2.1V21c4.2-.7 7.5-4.4 7.5-8.9"></path>
+                          d="M21 12.1c0-5-4-9-9-9s-9 4-9 9c0 4.5 3.3 8.2 7.6 8.9v-6.3H8.3v-2.6h2.3v-2c0-2.2 1.4-3.5 3.4-3.5 1 0 2 .2 2 .2V9h-1c-1.1 0-1.4.7-1.4 1.4v1.7H16l-.4 2.6h-2.1V21c4.2-.7 7.5-4.4 7.5-8.9"/>
                   </svg>
                   Login with Facebook
               </SocialButton>

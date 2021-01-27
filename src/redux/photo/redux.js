@@ -9,6 +9,11 @@ const initialState = {
     popupUsername: undefined,
     popupPhoto: [],
     relatedPhotos: [],
+    visualPhoto: {
+        urls: {
+            full:{},
+        }
+    },
 }
 
 export const Action = createActions({
@@ -18,6 +23,7 @@ export const Action = createActions({
     fetchPhotoById: ['data'],
     photoPopup: ['data'],
     relatedPhotos: ['id','data'],
+    getRandomPhoto: ['data'],
 }, {
     prefix: 'PHOTO/'
 });

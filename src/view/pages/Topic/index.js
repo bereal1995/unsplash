@@ -2,11 +2,7 @@ import React from 'react';
 import styled from "styled-components";
 import TopicContainer from "../../containers/TopicContainer";
 
-function Topic(props) {
-
-    const {
-
-    } = props;
+function Topic() {
 
   return (
       <Container>

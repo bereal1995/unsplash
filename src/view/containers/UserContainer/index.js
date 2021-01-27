@@ -3,7 +3,7 @@ import styled from "styled-components";
 import {useSelector} from "react-redux";
 import {userActions} from "../../../redux/ActionCreators";
 import PhotoList from "../../components/Photo/PhotoList";
-import Visual from "../../pages/User/Visual";
+import Visual from "./Visual";
 
 function UserContainer(props) {
 
@@ -17,25 +17,24 @@ function UserContainer(props) {
     const query = user.name;
     const profileImg = user?.profile_image?.large;
     const description = user?.bio;
+
     useEffect( () => {
-        getUserProfile()
-        getUserPhoto()
-    }, [])
-    const getUserProfile = () => userActions.getUserProfile(id);
-    const getUserPhoto = () => userActions.fetchUserPhoto(id,{
-        per_page: 5,
-    });
+        userActions.getUserProfile(id);
+        userActions.fetchUserPhoto(id,{
+            per_page: 5,
+        });
+    }, [id])
 
 
     return (
-      <Container>
-          <Visual profileImg={profileImg}
-                  query={query}
-                  description={description}
-          />
-          <PhotoList photos={userPhotos}/>
-      </Container>
-  )
+        <Container>
+            <Visual profileImg={profileImg}
+                    query={query}
+                    description={description}
+            />
+            <PhotoList photos={userPhotos}/>
+        </Container>
+    )
 }
 
 const Container = styled.div`

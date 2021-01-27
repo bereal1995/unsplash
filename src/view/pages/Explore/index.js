@@ -2,11 +2,7 @@ import React from 'react';
 import styled from "styled-components";
 import {PageContainer} from "../../components/Layout/Styled";
 
-function Explore(props) {
-
-    const {
-    
-    } = props;
+function Explore() {
 
   return (
       <Container>

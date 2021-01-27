@@ -1,5 +1,4 @@
 import React, {useEffect} from 'react';
-import styled from "styled-components";
 import {withRouter} from "react-router-dom";
 import Header from "../../components/Header";
 import TopicsNav from "../../components/Header/TopicsNav";
@@ -35,9 +34,5 @@ function HeaderContainer(props) {
       </>
   )
 }
-const Container = styled.div`
-
-`;
-
 
 export default withRouter(HeaderContainer);

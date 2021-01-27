@@ -2,17 +2,13 @@ import React from 'react';
 import styled from "styled-components";
 import {PageContainer} from "../../components/Layout/Styled";
 
-function Brands(props) {
+function Brands() {
 
-    const {
-    
-    } = props;
-
-  return (
-      <Container>
-        Brands
-      </Container>
-  )
+    return (
+        <Container>
+            Brands
+        </Container>
+    )
 }
 const Container = styled(PageContainer)`
 

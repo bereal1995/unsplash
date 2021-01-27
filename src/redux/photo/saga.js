@@ -40,6 +40,15 @@ const saga = function* () {
             yield put(AppAction.Creators.updateState({isLoading:false}));
 
         }),
+
+        takeLatest(Action.Types.GET_RANDOM_PHOTO, function* ({data}) {
+            yield put(AppAction.Creators.updateState({isLoading:true}));
+            const result = yield call(Api.getRandomPhoto, data);
+            yield put(Action.Creators.updateState({
+                visualPhoto: result
+            }))
+            yield put(AppAction.Creators.updateState({isLoading:false}));
+        }),
     ])
 }
 

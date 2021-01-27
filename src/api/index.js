@@ -4,8 +4,10 @@ import {FetchJson} from "../lib/Fetch";
 const Api = {
     fetchPhoto: (data) => FetchJson.get('/photos',data),
     fetchPhotoById: (id) => FetchJson.get(`/photos/${id}`),
-    searchPhoto: (data) => FetchJson.get('/search/photos',data),
     relatedPhotos: (id) => FetchJson.get(`/photos/${id}/related`),
+    getRandomPhoto: () => FetchJson.get(`/photos/random`),
+
+    searchPhoto: (data) => FetchJson.get('/search/photos',data),
 
     fetchTopics: (data) => FetchJson.get('/topics',data),
     getTopicById: (id) => FetchJson.get(`/topics/${id}/`),

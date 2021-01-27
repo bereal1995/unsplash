@@ -4,18 +4,14 @@ import SearchBox from "../../components/SearchBox";
 import {PageContainer} from "../../components/Layout/Styled";
 import TrendKeyword from "../../components/SearchBox/TrendKeyword";
 
-function Visual(props) {
-
-    const {
-
-    } = props;
+function Visual({visualPhoto}) {
 
   return (
       <Container>
           <VisualContainer>
               <VisualImg>
                   <img className="_29Gk3" role="presentation"
-                       src="https://images.unsplash.com/photo-1605424198744-ab7f90314ad6?ixlib=rb-1.2.1&amp;ixid=MXwxMjA3fDB8MHxwaG90by1vZi10aGUtZGF5fHx8fGVufDB8fHw%3D&amp;auto=format%2Ccompress&amp;fit=crop&amp;"/>
+                       src={visualPhoto.urls.full} alt={'비주얼 이미지'}/>
                   <div className="dimed"/>
               </VisualImg>
               <VisualCont>
@@ -27,21 +23,20 @@ function Visual(props) {
                       </p>
                   </VisualText>
                   <SearchBox shape={'square'}/>
-                  <TrendKeyword/>
               </VisualCont>
               <VisualBottomText>
                   <p>
-                      <a href={"#"}>Photo of the Day</a> by <a href={"#"}>Michiel Annaert</a>
+                      <span>Photo of the Day</span> by <span>Michiel Annaert</span>
                   </p>
                   <p>
-                      Read more about the <a href={"#"}>Unsplash License</a>
+                      Read more about the <span>Unsplash License</span>
                   </p>
                   <p>
-                      <a href={"#"}>
+                      <span>
                           <img className="_11pPi _2OP8p"
-                               src="https://images.unsplash.com/file-1606177908946-d1eed1cbe4f5image"/>
+                               src="https://images.unsplash.com/file-1606177908946-d1eed1cbe4f5image" alt={'이미'}/>
                           Create your website today.
-                      </a>
+                      </span>
                   </p>
               </VisualBottomText>
           </VisualContainer>
@@ -119,7 +114,7 @@ const VisualBottomText = styled.div`
     padding: 20px;
     font-size: 13px;
     color: rgba(255,255,255,.5);
-    a{
+    span{
       color: rgba(255,255,255,.5);
       text-decoration: none;
       transition: all .1s;

@@ -1,14 +1,10 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import ReactDOM from 'react-dom';
-import styled from "styled-components";
 import {useSelector} from "react-redux";
 import {photoActions, userActions} from "../../../redux/ActionCreators";
 import PhotoPopup from "../../components/PhotoPopup";
 
-function PhotoPopupContainer(props) {
-
-    const {
-    } = props;
+function PhotoPopupContainer() {
 
     const photo = useSelector(state => state.photo);
 
@@ -31,7 +27,7 @@ function PhotoPopupContainer(props) {
         } else {
             onScroll()
         }
-    }, [photo.popupId])
+    }, [photo.popupId, photo.popupUsername])
 
     if (!photo.popupId) return null;
 
@@ -42,9 +38,5 @@ function PhotoPopupContainer(props) {
           document.getElementById('photo-popup'))
   )
 }
-const Container = styled.div`
-  
-`;
-
 
 export default PhotoPopupContainer;

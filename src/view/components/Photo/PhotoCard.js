@@ -17,7 +17,7 @@ function PhotoCard(props) {
     return (
         <Container>
             <Thumb>
-                <img src={imgUrl}/>
+                <img src={imgUrl} alt={'썸네일 이미'}/>
             </Thumb>
             <TextContainer>
                 <ClickArea onClick={onClick}/>
@@ -38,7 +38,7 @@ function PhotoCard(props) {
                 <TextContainerBottom>
                     <Profile onClick={() => navigate(`/user/${username}`)}>
                         <ProfileImg>
-                            <img src={profileImg}/>
+                            <img src={profileImg} alt={'프로필 이미지'}/>
                         </ProfileImg>
                         <ProfileId>{name}</ProfileId>
                     </Profile>

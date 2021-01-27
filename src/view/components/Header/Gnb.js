@@ -5,11 +5,11 @@ import SearchBox from "../SearchBox";
 import MemberNav from "./MemberNav";
 import GnbMenu from "./GnbMenu";
 
-function Gnb(props) {
+function Gnb() {
 
   return (
       <Container>
-        <Logo withText={true}/>
+        <Logo withText={false}/>
         <SearchBox shape={'round'}/>
         <GnbMenu/>
         <MemberNav/>

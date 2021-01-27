@@ -5,6 +5,7 @@ import cn from 'classnames'
 import {useSelector} from "react-redux";
 import MenuPopup from "../MenuPopup";
 import {appActions} from "../../../redux/ActionCreators";
+import {navigate} from "../../../lib/History";
 
 
 function GnbMenu(props) {
@@ -19,13 +20,16 @@ function GnbMenu(props) {
   return (
       <Container>
         <Menu>
-            <MenuItem to={'/'}
-                      className={cn({isActive: location.pathname === '/'})}
-            >Home</MenuItem>
-            {/*<MenuItem to={'/brands'}>Brands <span>New</span></MenuItem>*/}
-            <MenuItem onClick={ () => {
-                window.location.href= 'https://unsplash.com/brands'
-            }}>Explore</MenuItem>
+            <MenuItem onClick={() => navigate('/')}
+                      className={cn({isActive: location.pathname === '/'})}>
+                Home
+            </MenuItem>
+            <MenuItem onClick={() => navigate('/brands')}>
+                Brands <span>New</span>
+            </MenuItem>
+            {/*<MenuItem onClick={ () => {*/}
+            {/*    window.location.href= 'https://unsplash.com/brands'*/}
+            {/*}}>Explore</MenuItem>*/}
             <MenuItem onClick={() => menuPopup()}>
                 <svg width="18" height="18" version="1.1" viewBox="0 0 32 32" aria-hidden="false"><path d="M7 15.5c0 1.9-1.6 3.5-3.5 3.5s-3.5-1.6-3.5-3.5 1.6-3.5 3.5-3.5 3.5 1.6 3.5 3.5zm21.5-3.5c-1.9 0-3.5 1.6-3.5 3.5s1.6 3.5 3.5 3.5 3.5-1.6 3.5-3.5-1.6-3.5-3.5-3.5zm-12.5 0c-1.9 0-3.5 1.6-3.5 3.5s1.6 3.5 3.5 3.5 3.5-1.6 3.5-3.5-1.6-3.5-3.5-3.5z"/></svg>
                 <MenuPopupContainer>
@@ -51,17 +55,18 @@ const MenuItem = styled.div`
     justify-content: center;
     position: relative;
     padding: 20px 12px;
+    color: #767676;
     cursor: pointer;
     fill: currentColor;
-    // span {
-    //     font-size: 18px;
-    //     position: relative;
-    //     top: -10px;
-    //     background: linear-gradient(94deg,#ff2a2a,#7074ff);
-    //     -webkit-background-clip: text;
-    //     -webkit-text-fill-color: transparent;
-    //     box-decoration-break: clone;
-    // }
+     span {
+         font-size: 10px;
+         position: relative;
+         top: -10px;
+         background: linear-gradient(94deg,#ff2a2a,#7074ff);
+         -webkit-background-clip: text;
+         -webkit-text-fill-color: transparent;
+         box-decoration-break: clone;
+     }
     &.isActive{
       color: #111;
       cursor: default;
