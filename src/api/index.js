@@ -1,4 +1,4 @@
-import FetchJson from "../lib/Fetch";
+import {FetchJson} from "../lib/Fetch";
 
 
 const Api = {

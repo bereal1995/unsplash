@@ -12,7 +12,7 @@ const initialState = {
 }
 
 export const Action = createActions({
-    updateState: ['payload'],
+    updateState: ['data'],
 }, {
     prefix: 'APP/'
 });

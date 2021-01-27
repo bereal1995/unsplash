@@ -5,8 +5,8 @@ const initialState = {
 }
 
 export const Action = createActions({
-    updateState: ['payload'],
-    getRelatedList: ['id','payload'],
+    updateState: ['data'],
+    getRelatedList: ['id','data'],
 }, {
     prefix: 'COLLECTION/'
 });

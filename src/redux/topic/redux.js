@@ -7,8 +7,8 @@ const initialState = {
 }
 
 export const Action = createActions({
-    updateState: ['payload'],
-    fetchTopics: ['payload'],
+    updateState: ['data'],
+    fetchTopics: ['data'],
     getTopicById: ['id','data'],
 }, {
     prefix: 'TOPIC/'

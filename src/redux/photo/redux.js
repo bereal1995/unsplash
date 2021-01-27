@@ -12,12 +12,12 @@ const initialState = {
 }
 
 export const Action = createActions({
-    updateState: ['payload'],
-    searchPhotos: ['payload'],
-    fetchPhotos: ['payload'],
-    fetchPhotoById: ['payload'],
-    photoPopup: ['payload'],
-    relatedPhotos: ['id','payload'],
+    updateState: ['data'],
+    searchPhotos: ['data'],
+    fetchPhotos: ['data'],
+    fetchPhotoById: ['data'],
+    photoPopup: ['data'],
+    relatedPhotos: ['id','data'],
 }, {
     prefix: 'PHOTO/'
 });
