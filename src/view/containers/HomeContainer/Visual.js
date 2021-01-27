@@ -16,7 +16,7 @@ function Visual(props) {
               <VisualImg>
                   <img className="_29Gk3" role="presentation"
                        src="https://images.unsplash.com/photo-1605424198744-ab7f90314ad6?ixlib=rb-1.2.1&amp;ixid=MXwxMjA3fDB8MHxwaG90by1vZi10aGUtZGF5fHx8fGVufDB8fHw%3D&amp;auto=format%2Ccompress&amp;fit=crop&amp;"/>
-                  <div className="dimed"></div>
+                  <div className="dimed"/>
               </VisualImg>
               <VisualCont>
                   <VisualText>
