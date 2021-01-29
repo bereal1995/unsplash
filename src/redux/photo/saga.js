@@ -1,4 +1,4 @@
-import {all, call, put, takeLatest} from 'redux-saga/effects';
+import {all, call, put, takeLatest, select} from 'redux-saga/effects';
 import {Action} from "./redux";
 import {Action as AppAction} from "../app/redux";
 import Api from "../../api";
@@ -43,10 +43,15 @@ const saga = function* () {
 
         takeLatest(Action.Types.GET_RANDOM_PHOTO, function* ({data}) {
             yield put(AppAction.Creators.updateState({isLoading:true}));
-            const result = yield call(Api.getRandomPhoto, data);
-            yield put(Action.Creators.updateState({
-                visualPhoto: result
-            }))
+            const {photo} = yield select();
+            
+            if ( typeof photo.visualPhoto.id === 'undefined') {
+                const result = yield call(Api.getRandomPhoto, data);
+
+                yield put(Action.Creators.updateState({
+                    visualPhoto: result
+                }))
+            }
             yield put(AppAction.Creators.updateState({isLoading:false}));
         }),
     ])

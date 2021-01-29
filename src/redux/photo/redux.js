@@ -11,7 +11,9 @@ const initialState = {
     relatedPhotos: [],
     visualPhoto: {
         urls: {
-            full:{},
+            full:{
+
+            },
         }
     },
 }

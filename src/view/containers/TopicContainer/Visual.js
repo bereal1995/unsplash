@@ -11,7 +11,6 @@ function Visual(props) {
     
     useEffect(() => {
         if (titleRef.current) {
-            console.log('@@titleRef.current',titleRef.current);
             const rect = titleRef.current.getBoundingClientRect();
             console.log('@@rect',rect);
         }
