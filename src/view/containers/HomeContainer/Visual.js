@@ -2,7 +2,6 @@ import React from 'react';
 import styled from "styled-components";
 import SearchBox from "../../components/SearchBox";
 import {PageContainer} from "../../components/Layout/Styled";
-import TrendKeyword from "../../components/SearchBox/TrendKeyword";
 
 function Visual({visualPhoto}) {
 
