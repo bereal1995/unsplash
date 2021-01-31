@@ -71,3 +71,40 @@ export const scrollToContent = (el) => {
     const oft = el.offsetTop - 200;
     window.scrollTo(0, oft);
 };
+
+
+
+export const setPhotoGroup = (data) => {
+
+    if (!data) return false;
+
+    let group1 = [];
+    let group2 = [];
+    let group3 = [];
+
+    for(let i=0; i < data.length; i++) {
+        if (i % 3 === 0) {
+            group1.push(data[i])
+        }
+        if (i % 3 === 1) {
+            group2.push(data[i])
+        }
+        if (i % 3 === 2) {
+            group3.push(data[i])
+        }
+    }
+
+    return [group1,group2,group3]
+}
+
+export const createObserver = (sentinelCurrent, callMoreItems = () => {}) => {
+    let observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if(entry.isIntersecting) {
+                callMoreItems && callMoreItems()
+            }
+        });
+    });
+
+    return observer.observe(sentinelCurrent);
+}

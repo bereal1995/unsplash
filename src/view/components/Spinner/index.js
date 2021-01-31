@@ -2,13 +2,7 @@ import React from 'react';
 import styled from "styled-components";
 import Skeleton from "react-loading-skeleton";
 
-function Spinner(props) {
-
-    const {
-        isLoading
-    } = props;
-
-    if (!isLoading) return null;
+function Spinner() {
 
   return (
       <Container>

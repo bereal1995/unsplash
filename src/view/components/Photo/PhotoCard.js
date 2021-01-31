@@ -57,7 +57,6 @@ const Container = styled.div`
     position: relative;
     transition: all .5s;
     width: 100%;
-    height: 400px;
 `;
 
 const Thumb = styled.div`

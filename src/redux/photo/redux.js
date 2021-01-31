@@ -3,6 +3,8 @@ import {createActions, createReducer} from "reduxsauce";
 const initialState = {
     list: [],
     search: {
+        currentPage: 1,
+        query: '',
         results: [],
     },
     popupId: undefined,
@@ -16,15 +18,22 @@ const initialState = {
             },
         }
     },
+    currentPage: 1,
 }
 
 export const Action = createActions({
     updateState: ['props'],
+
     searchPhotos: ['data'],
+    searchPhotosMore: ['data'],
+
     fetchPhotos: ['data'],
     fetchPhotoById: ['data'],
+
     photoPopup: ['data'],
+
     relatedPhotos: ['id','data'],
+
     getRandomPhoto: ['data'],
 }, {
     prefix: 'PHOTO/'

@@ -5,6 +5,8 @@ import {PageContainer} from "../../components/Layout/Styled";
 
 function Visual({visualPhoto}) {
 
+    if(!visualPhoto) return false;
+
   return (
       <Container>
           <VisualContainer>

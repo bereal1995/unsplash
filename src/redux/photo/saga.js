@@ -7,9 +7,19 @@ const saga = function* () {
     yield all([
         takeLatest(Action.Types.FETCH_PHOTOS, function* ({data}) {
             yield put(AppAction.Creators.updateState({isLoading:true}));
-            const result = yield call(Api.fetchPhoto, data)
+            const {photo} = yield select();
+
+            const result = yield call(Api.fetchPhoto, {
+                ...data,
+                page: photo.currentPage
+            })
+
             yield put(Action.Creators.updateState({
-                list: result
+                currentPage: photo.currentPage+1,
+                list: [
+                    ...photo.list,
+                    ...result
+                ]
             }))
             yield put(AppAction.Creators.updateState({isLoading:false}));
         }),
@@ -23,12 +33,39 @@ const saga = function* () {
 
         takeLatest(Action.Types.SEARCH_PHOTOS, function* ({data}) {
             yield put(AppAction.Creators.updateState({isLoading:true}));
+
             const result = yield call(Api.searchPhoto, data);
+
             yield put(Action.Creators.updateState({
-                search: result
+                search: {
+                    query: data.query,
+                    currentPage: data.page+1,
+                    results: result.results,
+                }
             }))
             yield put(AppAction.Creators.updateState({isLoading:false}));
 
+        }),
+
+        takeLatest(Action.Types.SEARCH_PHOTOS_MORE, function* ({data}) {
+            const {photo} = yield select();
+
+            const result = yield call(Api.searchPhoto, {
+                query: photo.search.query,
+                per_page: data.per_page,
+                page: photo.search.currentPage
+            });
+            yield put(Action.Creators.updateState({
+                search: {
+                    query: photo.search.query,
+                    currentPage: photo.search.currentPage+1,
+                    ...result,
+                    results: [
+                        ...photo.search.results,
+                        ...result.results
+                    ]
+                }
+            }))
         }),
 
         takeLatest(Action.Types.RELATED_PHOTOS, function* ({id}) {

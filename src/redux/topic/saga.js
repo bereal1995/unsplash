@@ -1,4 +1,4 @@
-import {all, call, put, takeLatest} from 'redux-saga/effects';
+import {all, call, put, select, takeLatest} from 'redux-saga/effects';
 import {Action} from "./redux";
 import Api from "../../api";
 
@@ -17,11 +17,34 @@ const saga = function* () {
             ])
 
             if (topicTitle && topicPhotos) {
+
                 yield put(Action.Creators.updateState({
                     topicTitle: topicTitle,
                     topicPhotos: topicPhotos
                 }))
             }
+            const {topic} = yield select();
+
+            console.log('@@topicaa',topic.topicPhotos);
+        }),
+
+        takeLatest(Action.Types.GET_TOPIC_BY_ID_MORE, function* ({id,data}) {
+            const {topic} = yield select();
+            console.log('@@topic',topic);
+
+            const topicPhotos = yield call(Api.getTopicPhotosById,id,{
+                ...data,
+                page: topic.currentPage + 1,
+            })
+
+            yield put(Action.Creators.updateState({
+                topicPhotos: [
+                    ...topic.topicPhotos,
+                    ...topicPhotos,
+                ],
+                currentPage: topic.currentPage+ 1,
+            }))
+
         }),
 
     ])
