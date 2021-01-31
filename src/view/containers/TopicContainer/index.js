@@ -19,7 +19,7 @@ function TopicContainer(props) {
     useEffect( () => {
         topicActions.getTopicById(query,{
             per_page: 15,
-            page: topic.currentPage,
+            page: 1,
         })
         if (sentinelRef.current) {
             createObserver(sentinelRef.current, () => {

@@ -20,7 +20,8 @@ const saga = function* () {
 
                 yield put(Action.Creators.updateState({
                     topicTitle: topicTitle,
-                    topicPhotos: topicPhotos
+                    topicPhotos: topicPhotos,
+                    currentPage: data.page,
                 }))
             }
             const {topic} = yield select();
