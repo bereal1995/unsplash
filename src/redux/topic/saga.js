@@ -24,15 +24,14 @@ const saga = function* () {
                     currentPage: data.page,
                 }))
             }
-            const {topic} = yield select();
-
-            console.log('@@topicaa',topic.topicPhotos);
+            yield put(Action.Creators.getTopicByIdMore(topicTitle.slug,{
+                per_page: 5,
+                page: data.page + 1,
+            }))
         }),
 
         takeLatest(Action.Types.GET_TOPIC_BY_ID_MORE, function* ({id,data}) {
             const {topic} = yield select();
-            console.log('@@topic',topic);
-
             const topicPhotos = yield call(Api.getTopicPhotosById,id,{
                 ...data,
                 page: topic.currentPage + 1,
@@ -45,6 +44,7 @@ const saga = function* () {
                 ],
                 currentPage: topic.currentPage+ 1,
             }))
+            console.log('@@id',id);
 
         }),
 

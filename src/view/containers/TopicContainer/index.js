@@ -22,6 +22,7 @@ function TopicContainer(props) {
             page: 1,
         })
         if (sentinelRef.current) {
+            console.log('@@query',query);
             createObserver(sentinelRef.current, () => {
                 topicActions.getTopicByIdMore(query,{
                     per_page: 5,
