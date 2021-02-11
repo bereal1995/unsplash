@@ -19,7 +19,7 @@ function Oauth({location}) {
     console.log('@@dispatch',dispatch);
     useEffect(() => {
         getToken()
-    },[dispatch])
+    })
 
     const getToken = async () => {
         const result = await axios({
