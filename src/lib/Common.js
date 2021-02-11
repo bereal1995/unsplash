@@ -72,30 +72,21 @@ export const scrollToContent = (el) => {
     window.scrollTo(0, oft);
 };
 
-
-
 export const setPhotoGroup = (data) => {
+    let groups = [[], [], []]
+    let groupHeight = [0, 0, 0];
 
-    if (!data) return false;
-
-    let group1 = [];
-    let group2 = [];
-    let group3 = [];
-
-    for(let i=0; i < data.length; i++) {
-        if (i % 3 === 0) {
-            group1.push(data[i])
-        }
-        if (i % 3 === 1) {
-            group2.push(data[i])
-        }
-        if (i % 3 === 2) {
-            group3.push(data[i])
-        }
+    for(let i = 0; i < data.length; i++) {
+        const width = data[i].width;
+        const height = data[i].height;
+        const ratio = width / height;
+        const minIndex = groupHeight.indexOf(Math.min(...groupHeight));
+        groups[minIndex].push(data[i])
+        groupHeight[minIndex] = groupHeight[minIndex] + Number(ratio.toFixed(2));
     }
 
-    return [group1,group2,group3]
-}
+    return groups;
+};
 
 export const createObserver = (sentinelCurrent, callMoreItems = () => {}) => {
     let observer = new IntersectionObserver((entries, observer) => {
@@ -107,4 +98,28 @@ export const createObserver = (sentinelCurrent, callMoreItems = () => {}) => {
     });
 
     return observer.observe(sentinelCurrent);
+}
+
+export const setAccessToken = (token) => {
+    window.localStorage.setItem('AccessToken',token)
+}
+
+export const setRefreshToken = (token) => {
+    window.localStorage.setItem('RefreshToken',token)
+}
+
+export const getAccessToken = () => {
+    return window.localStorage.getItem('AccessToken')
+}
+
+export const getRefreshToken = () => {
+    return window.localStorage.getItem('RefreshToken')
+}
+
+export const removeAccessToken = () => {
+    return window.localStorage.removeItem('AccessToken')
+}
+
+export const removeRefreshToken = () => {
+    return window.localStorage.removeItem('RefreshToken')
 }

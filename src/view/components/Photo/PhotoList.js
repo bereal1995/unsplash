@@ -4,6 +4,7 @@ import PhotoCard from "./PhotoCard";
 import {photoActions} from "../../../redux/ActionCreators";
 import {setPhotoGroup} from "../../../lib/Common";
 import SkeletonList from "../Spinner/SkeletonList";
+import {useSelector} from "react-redux";
 
 function PhotoList({photos}) {
 
@@ -15,13 +16,13 @@ function PhotoList({photos}) {
     }
 
     const photosGroup = setPhotoGroup(photos);
+    const app = useSelector(state => state.app);
 
     if (!photosGroup) return false;
 
     return (
       <Container className={'photo-list'}>
           {
-              photosGroup[0].length > 0 ?
               photosGroup.map( (group, groupIndex) => (
                   <GroupCol key={groupIndex}>
                       {
@@ -33,14 +34,15 @@ function PhotoList({photos}) {
                                              profileImg={item.user.profile_image.small}
                                              downloadImg={item.links.download}
                                              onClick={() => showPopup(item.id, item.user.username)}
+                                             width={item.width}
+                                             height={item.height}
+                                             color={item.color}
                                   />
                               </ColItem>
                           ))
                       }
                   </GroupCol>
               ))
-                  :
-                  <SkeletonList/>
           }
       </Container>
   )
@@ -53,7 +55,7 @@ const Container = styled.div`
 `;
 
 const GroupCol = styled.div`
-    
+    width: 33.3%;
 `;
 
 const ColItem = styled.div`

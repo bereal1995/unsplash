@@ -9,6 +9,7 @@ import User from "../containers/UserContainer";
 import PhotoPopupContainer from "../containers/PhotoPopupContainer";
 import Login from "../pages/Login";
 import Join from "../pages/Join";
+import Oauth from "../pages/Oauth";
 
 function Routes() {
 
@@ -23,6 +24,7 @@ function Routes() {
           <Route path={"/user/:id"} component={User}/>
           <Route path={"/login"} component={Login}/>
           <Route path={"/join"} component={Join}/>
+          <Route path={"/oauth"} component={Oauth}/>
       </Switch>
   )
 }

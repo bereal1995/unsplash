@@ -1,15 +1,36 @@
 import React from 'react';
 import styled from "styled-components";
 import {navigate} from "../../../lib/History";
+import qs from 'qs';
+import {UNSPLASH_API_KEY} from "../../../constants/Consts";
+import {removeAccessToken, removeRefreshToken} from "../../../lib/Common";
 
 function MemberNav() {
+
+    const authParams = qs.stringify({
+        client_id: UNSPLASH_API_KEY,
+        redirect_uri: `http://localhost:3000/oauth`,
+        response_type: 'code',
+        scope: 'public read_user',
+    })
+
+    console.log('@@',window.localStorage.AccessToken);
+
+    const logOut = () => {
+        removeAccessToken()
+        removeRefreshToken()
+    }
 
   return (
       <Container>
           <SubmitButton onClick={() => navigate('/')}>Submit a Photo</SubmitButton>
           <span className={'button_bar'}/>
           <LoginContainer>
-              <Login onClick={() => navigate('/login')}>Login</Login>
+              {
+                  window.localStorage.AccessToken ? <Login onClick={() => logOut()}>로그아웃</Login>
+                  :<Login href={`https://unsplash.com/oauth/authorize?${authParams}`}>Login</Login>
+              }
+
               <Join onClick={() => navigate('/join')}>Join free</Join>
           </LoginContainer>
       </Container>
@@ -53,7 +74,8 @@ const LoginContainer = styled.div`
     }
 `;
 
-const Login = styled.div`
+const Login = styled.a`
+    margin-right: 14px;
     color: #767676;
     &:hover {
       color: #111;

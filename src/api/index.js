@@ -17,6 +17,8 @@ const Api = {
     getUserProfile: (id) => FetchJson.get(`/users/${id}/`),
 
     getRelatedCollection: (id,data) => FetchJson.get(`/collections/${id}/related/`,data),
+
+    getMe: () => FetchJson.get(`/me`),
 }
 
 export default Api;

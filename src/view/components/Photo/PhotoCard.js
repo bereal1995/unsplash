@@ -12,11 +12,16 @@ function PhotoCard(props) {
         downloadImg,
         username,
         onClick = () => {},
+        width,
+        height,
+        color,
     } = props;
 
+    const ratioPercent = 100 * (height / width);
+
     return (
-        <Container>
-            <Thumb>
+        <Container style={{paddingBottom: ratioPercent + "%"}}>
+            <Thumb style={{backgroundColor: color}}>
                 <img src={imgUrl} alt={'썸네일 이미'}/>
             </Thumb>
             <TextContainer>
@@ -60,6 +65,11 @@ const Container = styled.div`
 `;
 
 const Thumb = styled.div`
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
   width: 100%;
   height: 100%;
   img{

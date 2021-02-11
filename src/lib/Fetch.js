@@ -1,6 +1,7 @@
 import axios from 'axios';
 import qs from 'qs';
 import {UNSPLASH_API_KEY, URL} from "../constants/Consts";
+import {getAccessToken} from "./Common";
 
 const FetchConsts = {
     GET: 'get',
@@ -54,6 +55,12 @@ const request = async (contentType, method, url,  data = {}) => {
 
         console.log('@@[Request Config]',config);
 
+        console.log('@@getAccessToken()',getAccessToken());
+        if (getAccessToken()) {
+            axiosInstance.defaults.headers.common['Authorization'] = 'Bearer ' + getAccessToken();
+        }
+
+        // 로그아웃 하면 로컬 스토리지 초기화! 로그인체크는 토큰이 있는지 확인
         const result = await axiosInstance(config);
 
         return result.data;

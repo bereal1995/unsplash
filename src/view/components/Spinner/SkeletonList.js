@@ -13,7 +13,9 @@ function SkeletonList() {
               {
                   arr.map((item,i) => (
                       <Col key={i}>
-                          <SkeletonItem/>
+                          <SkeletonItem width={item.width}
+                                        height={item.height}
+                                        color={item.color}/>
                       </Col>
                   ))
               }
