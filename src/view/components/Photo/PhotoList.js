@@ -3,8 +3,6 @@ import styled from "styled-components";
 import PhotoCard from "./PhotoCard";
 import {photoActions} from "../../../redux/ActionCreators";
 import {setPhotoGroup} from "../../../lib/Common";
-import SkeletonList from "../Spinner/SkeletonList";
-import {useSelector} from "react-redux";
 
 function PhotoList({photos}) {
 
@@ -16,7 +14,6 @@ function PhotoList({photos}) {
     }
 
     const photosGroup = setPhotoGroup(photos);
-    const app = useSelector(state => state.app);
 
     if (!photosGroup) return false;
 

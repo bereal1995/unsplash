@@ -3,9 +3,10 @@ import styled from "styled-components";
 import {withRouter} from "react-router-dom";
 import qs from 'qs'
 import axios from "axios";
-import {UNSPLASH_API_KEY, UNSPLASH_SECRET_KEY} from "../../../constants/Consts";
+import {BASE_URL, UNSPLASH_API_KEY, UNSPLASH_SECRET_KEY} from "../../../constants/Consts";
 import {setAccessToken, setRefreshToken} from "../../../lib/Common";
 import {navigate} from "../../../lib/History";
+import {useDispatch} from "react-redux";
 
 function Oauth({location}) {
 
@@ -13,9 +14,12 @@ function Oauth({location}) {
     console.log('@@code',code);
     console.log('@@location',location);
 
+    const dispatch = useDispatch()
+
+    console.log('@@dispatch',dispatch);
     useEffect(() => {
         getToken()
-    },[])
+    },[dispatch])
 
     const getToken = async () => {
         const result = await axios({
@@ -24,7 +28,7 @@ function Oauth({location}) {
             data: {
                 client_id: UNSPLASH_API_KEY,
                 client_secret: UNSPLASH_SECRET_KEY,
-                redirect_uri: 'http://localhost:3000/oauth',
+                redirect_uri: BASE_URL+'/oauth',
                 code,
                 grant_type: 'authorization_code',
             }
