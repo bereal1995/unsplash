@@ -4,6 +4,8 @@ import {navigate} from "../../../lib/History";
 import qs from 'qs';
 import {UNSPLASH_API_KEY} from "../../../constants/Consts";
 import {removeAccessToken, removeRefreshToken} from "../../../lib/Common";
+import {appActions} from "../../../redux/ActionCreators";
+import {useSelector} from "react-redux";
 
 function MemberNav() {
 
@@ -14,11 +16,14 @@ function MemberNav() {
         scope: 'public read_user',
     })
 
-    console.log('@@',window.localStorage.AccessToken);
+    const {login} = useSelector(state => state.app);
 
     const logOut = () => {
-        removeAccessToken()
-        removeRefreshToken()
+        appActions.updateState({
+            login: false,
+        });
+        removeAccessToken();
+        removeRefreshToken();
     }
 
   return (
@@ -27,7 +32,7 @@ function MemberNav() {
           <span className={'button_bar'}/>
           <LoginContainer>
               {
-                  window.localStorage.AccessToken ? <Login onClick={() => logOut()}>로그아웃</Login>
+                  login ? <Login onClick={() => logOut()}>로그아웃</Login>
                   :<Login href={`https://unsplash.com/oauth/authorize?${authParams}`}>Login</Login>
               }
 

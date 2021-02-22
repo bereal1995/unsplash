@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from "styled-components";
+import RelatedList from "../../components/Visual/RelatedList";
+import {useSelector} from "react-redux";
 
 function Visual(props) {
 
@@ -7,10 +9,13 @@ function Visual(props) {
         query,
     } = props;
 
+    const {searchRelated} = useSelector(state => state.photo);
+
   return (
       <Container>
           <TitleContainer>
               <h2>{query}</h2>
+              <RelatedList list={searchRelated}/>
           </TitleContainer>
       </Container>
   )

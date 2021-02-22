@@ -8,6 +8,7 @@ const Api = {
     getRandomPhoto: () => FetchJson.get(`/photos/random`),
 
     searchPhoto: (data) => FetchJson.get('/search/photos',data),
+    searchPhotoRelated: (data) => FetchJson.get('/search/',data),
 
     fetchTopics: (data) => FetchJson.get('/topics',data),
     getTopicById: (id) => FetchJson.get(`/topics/${id}/`),

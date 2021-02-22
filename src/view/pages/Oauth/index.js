@@ -6,19 +6,14 @@ import axios from "axios";
 import {BASE_URL, UNSPLASH_API_KEY, UNSPLASH_SECRET_KEY} from "../../../constants/Consts";
 import {setAccessToken, setRefreshToken} from "../../../lib/Common";
 import {navigate} from "../../../lib/History";
-import {useDispatch} from "react-redux";
+import {appActions} from "../../../redux/ActionCreators";
 
 function Oauth({location}) {
 
     const {code} = qs.parse(location.search,{ignoreQueryPrefix: true});
-    console.log('@@code',code);
-    console.log('@@location',location);
 
-    const dispatch = useDispatch()
-
-    console.log('@@dispatch',dispatch);
     useEffect(() => {
-        getToken()
+        getToken();
     })
 
     const getToken = async () => {
@@ -39,6 +34,9 @@ function Oauth({location}) {
             const refresh_token = result.data.refresh_token
             setAccessToken(access_token);
             setRefreshToken(refresh_token);
+            appActions.updateState({
+                login: true,
+            });
         } else {
             setAccessToken();
             setRefreshToken();
@@ -50,9 +48,7 @@ function Oauth({location}) {
 
 
   return (
-      <Container>
-          Oauth
-      </Container>
+      <Container/>
   )
 }
 const Container = styled.div`

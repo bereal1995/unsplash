@@ -19,6 +19,9 @@ function SearchContainer(props) {
     const sentinelRef = useRef();
 
     useEffect( () => {
+        photoActions.searchPhotosRelated({
+            query,
+        })
         photoActions.searchPhotos({
             query,
             page: 1,

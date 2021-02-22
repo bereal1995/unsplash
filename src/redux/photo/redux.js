@@ -7,6 +7,7 @@ const initialState = {
         query: '',
         results: [],
     },
+    searchRelated: [],
     popupId: undefined,
     popupUsername: undefined,
     popupPhoto: [],
@@ -25,6 +26,7 @@ export const Action = createActions({
     updateState: ['props'],
 
     searchPhotos: ['data'],
+    searchPhotosRelated: ['data'],
     searchPhotosMore: ['data'],
 
     fetchPhotos: ['data'],

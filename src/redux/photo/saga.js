@@ -44,7 +44,15 @@ const saga = function* () {
                 }
             }))
             yield put(AppAction.Creators.updateState({isLoading:false}));
+        }),
 
+        takeLatest(Action.Types.SEARCH_PHOTOS_RELATED, function* ({data}) {
+
+            const result = yield call(Api.searchPhotoRelated, data);
+
+            yield put(Action.Creators.updateState({
+                searchRelated: result.related_searches,
+            }))
         }),
 
         takeLatest(Action.Types.SEARCH_PHOTOS_MORE, function* ({data}) {

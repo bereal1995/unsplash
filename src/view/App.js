@@ -11,13 +11,13 @@ import Api from "../api";
 
 function App() {
 
-    const getMe = async () => {
-        const result = await Api.getMe()
-        console.log('@@result',result);
-    }
-    useEffect(() => {
-        getMe()
-    },[])
+    // const getMe = async () => {
+    //     const result = await Api.getMe()
+    //     console.log('@@result',result);
+    // }
+    // useEffect(() => {
+    //     getMe();
+    // },[])
 
     return (
         <Container>

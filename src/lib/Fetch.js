@@ -55,7 +55,6 @@ const request = async (contentType, method, url,  data = {}) => {
 
         console.log('@@[Request Config]',config);
 
-        console.log('@@getAccessToken()',getAccessToken());
         if (getAccessToken()) {
             axiosInstance.defaults.headers.common['Authorization'] = 'Bearer ' + getAccessToken();
         }

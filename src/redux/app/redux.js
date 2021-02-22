@@ -9,6 +9,7 @@ const initialState = {
     users: [],
     isLoading: false,
     menuPopup: false,
+    login: false,
 }
 
 export const Action = createActions({
