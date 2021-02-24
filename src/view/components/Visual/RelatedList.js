@@ -35,9 +35,6 @@ const Container = styled.div`
     cursor: pointer;
     font-size: 15px;
     line-height: 1;
-    overflow:hidden; 
-    text-overflow:ellipsis; 
-    white-space:nowrap;
     span {
       display:flex;
       align-items: center;
@@ -47,6 +44,9 @@ const Container = styled.div`
       border: 1px solid #767676;
       border-radius: 4px;
       transition: all .4s;
+      overflow:hidden; 
+      text-overflow:ellipsis; 
+      white-space:nowrap;
       &:hover {
         border: 1px solid #111;
         color: #111;
