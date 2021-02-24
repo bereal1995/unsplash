@@ -35,6 +35,9 @@ const Container = styled.div`
     cursor: pointer;
     font-size: 15px;
     line-height: 1;
+    overflow:hidden; 
+    text-overflow:ellipsis; 
+    white-space:nowrap;
     span {
       display:flex;
       align-items: center;

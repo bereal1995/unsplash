@@ -30,9 +30,6 @@ const TitleContainer = styled.div`
       font-size: 46px;
       line-height: 1.2;
       text-transform: capitalize;
-      overflow:hidden; 
-      text-overflow:ellipsis; 
-      white-space:nowrap;
     }
 `;
 
