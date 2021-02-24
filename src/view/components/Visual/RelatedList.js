@@ -36,14 +36,13 @@ const Container = styled.div`
     font-size: 15px;
     line-height: 1;
     span {
-      display:flex;
-      align-items: center;
-      justify-content: center;
       width: 145px;
       padding: 13px;
       border: 1px solid #767676;
       border-radius: 4px;
+      line-height: 1;
       transition: all .4s;
+      text-align: center;
       overflow:hidden; 
       text-overflow:ellipsis; 
       white-space:nowrap;
