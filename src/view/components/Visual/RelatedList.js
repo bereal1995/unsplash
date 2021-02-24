@@ -36,6 +36,7 @@ const Container = styled.div`
     font-size: 15px;
     line-height: 1;
     span {
+      display:block;
       width: 145px;
       padding: 13px;
       border: 1px solid #767676;
