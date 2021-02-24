@@ -76,7 +76,8 @@ const VisualCont = styled.div`
   top: 0;
   bottom: 0;
   width: 864px;
-  padding: 144px 0;
+  max-width: 100%;
+  padding: 144px 10px;
   margin: 0 auto;
   font-size: 18px;
   font-weight: 500;
