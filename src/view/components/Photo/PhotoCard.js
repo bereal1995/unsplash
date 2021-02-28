@@ -2,10 +2,15 @@ import React from 'react';
 import styled from "styled-components";
 import {navigate} from "../../../lib/History";
 import {Button} from "../Button/Button.Styled";
+import {photoActions} from "../../../redux/ActionCreators";
+import {useSelector} from "react-redux";
 
 function PhotoCard(props) {
 
+    const {likedPhotos} = useSelector(state => state.photo);
+
     const {
+        id,
         imgUrl,
         name,
         profileImg,
@@ -18,6 +23,12 @@ function PhotoCard(props) {
     } = props;
 
     const ratioPercent = 100 * (height / width);
+    const likePhoto = () => {
+        photoActions.likePhoto(id);
+    }
+    const unlikePhoto = () => {
+        photoActions.unlikePhoto(id);
+    }
 
     return (
         <Container style={{paddingBottom: ratioPercent + "%"}}>
@@ -28,7 +39,7 @@ function PhotoCard(props) {
                 <ClickArea onClick={onClick}/>
 
                 <TextContainerTop>
-                    <Button>
+                    <Button onClick={ likedPhotos.includes(id) ? likePhoto : unlikePhoto}>
                         <svg width="32" height="32" className="BWSrD" version="1.1" viewBox="0 0 32 32" aria-hidden="false">
                             <path
                                 d="M17.4 29c-.8.8-2 .8-2.8 0l-12.3-12.8c-3.1-3.1-3.1-8.2 0-11.4 3.1-3.1 8.2-3.1 11.3 0l2.4 2.8 2.3-2.8c3.1-3.1 8.2-3.1 11.3 0 3.1 3.1 3.1 8.2 0 11.4l-12.2 12.8z"/>

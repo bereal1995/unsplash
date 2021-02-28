@@ -2,24 +2,26 @@ import {FetchJson} from "../lib/Fetch";
 
 
 const Api = {
-    fetchPhoto: (data) => FetchJson.get('/photos',data),
-    fetchPhotoById: (id) => FetchJson.get(`/photos/${id}`),
     relatedPhotos: (id) => FetchJson.get(`/photos/${id}/related`),
-    getRandomPhoto: () => FetchJson.get(`/photos/random`),
 
     searchPhoto: (data) => FetchJson.get('/search/photos',data),
     searchPhotoRelated: (data) => FetchJson.get('/search/',data),
 
     fetchTopics: (data) => FetchJson.get('/topics',data),
-    getTopicById: (id) => FetchJson.get(`/topics/${id}/`),
-    getTopicPhotosById: (id,data) => FetchJson.get(`/topics/${id}/photos/`,data),
-
+    fetchPhoto: (data) => FetchJson.get('/photos',data),
+    fetchPhotoById: (id) => FetchJson.get(`/photos/${id}`),
     fetchUserPhoto: (id,data) => FetchJson.get(`/users/${id}/photos/`,data),
-    getUserProfile: (id) => FetchJson.get(`/users/${id}/`),
 
+    getTopicById: (id) => FetchJson.get(`/topics/${id}/`),
+    getRandomPhoto: () => FetchJson.get(`/photos/random`),
+    getMe: () => FetchJson.get(`/me`),
+    getTopicPhotosById: (id,data) => FetchJson.get(`/topics/${id}/photos/`,data),
+    getUserProfile: (id) => FetchJson.get(`/users/${id}/`),
     getRelatedCollection: (id,data) => FetchJson.get(`/collections/${id}/related/`,data),
 
-    getMe: () => FetchJson.get(`/me`),
+    likePhoto: (id) => FetchJson.post(`/photos/${id}/like`),
+    unlikePhoto: (id) => FetchJson.delete(`/photos/${id}/like`),
+    likedPhotos: (username) => FetchJson.get(`/users/${username}/likes`),
 }
 
 export default Api;

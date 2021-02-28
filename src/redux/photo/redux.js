@@ -1,6 +1,8 @@
 import {createActions, createReducer} from "reduxsauce";
 
 const initialState = {
+    me: {},
+    likedPhotos: [],
     list: [],
     search: {
         currentPage: 1,
@@ -37,6 +39,12 @@ export const Action = createActions({
     relatedPhotos: ['id','data'],
 
     getRandomPhoto: ['data'],
+    getMe: [''],
+
+    likePhoto: ['id'],
+    unlikePhoto: ['id'],
+    likedPhotos: ['username'],
+
 }, {
     prefix: 'PHOTO/'
 });

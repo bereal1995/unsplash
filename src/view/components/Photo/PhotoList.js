@@ -1,10 +1,13 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import styled from "styled-components";
 import PhotoCard from "./PhotoCard";
 import {photoActions} from "../../../redux/ActionCreators";
 import {setPhotoGroup} from "../../../lib/Common";
+import {useSelector} from "react-redux";
 
 function PhotoList({photos}) {
+
+    const {me} = useSelector(state => state.photo);
 
     const showPopup = (id, username) => {
         photoActions.updateState({
@@ -12,6 +15,12 @@ function PhotoList({photos}) {
             popupUsername: username,
         })
     }
+
+    useEffect(() => {
+        if(me.username) {
+            photoActions.likedPhotos(me.username)
+        }
+    },[me])
 
     const photosGroup = setPhotoGroup(photos);
 
@@ -25,7 +34,8 @@ function PhotoList({photos}) {
                       {
                           group.map((item,i) => (
                               <ColItem key={i}>
-                                  <PhotoCard imgUrl={item.urls.regular}
+                                  <PhotoCard id={item.id}
+                                             imgUrl={item.urls.regular}
                                              name={item.user.name}
                                              username={item.user.username}
                                              profileImg={item.user.profile_image.small}

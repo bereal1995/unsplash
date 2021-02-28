@@ -9,7 +9,7 @@ import {SentinelCommon} from "../../../styled/Common.Styled";
 
 function HomeContainer() {
 
-    const {list, visualPhoto} = useSelector(state => state.photo);
+    const {list} = useSelector(state => state.photo);
 
     const sentinelRef = useRef();
 
@@ -18,10 +18,6 @@ function HomeContainer() {
             per_page: 15,
             page: 1,
         });
-        photoActions.getRandomPhoto({
-            count: 1,
-        });
-
         if (sentinelRef.current) {
             createObserver(sentinelRef.current, () => {
                 photoActions.fetchPhotos({
@@ -34,7 +30,7 @@ function HomeContainer() {
 
   return (
       <Container>
-          <Visual visualPhoto={visualPhoto}/>
+          <Visual/>
           <PhotoList photos={list}/>
           <Sentinel ref={sentinelRef}/>
       </Container>

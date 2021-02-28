@@ -4,7 +4,7 @@ import {navigate} from "../../../lib/History";
 import qs from 'qs';
 import {UNSPLASH_API_KEY} from "../../../constants/Consts";
 import {removeAccessToken, removeRefreshToken} from "../../../lib/Common";
-import {appActions} from "../../../redux/ActionCreators";
+import {appActions, photoActions} from "../../../redux/ActionCreators";
 import {useSelector} from "react-redux";
 
 function MemberNav() {
@@ -13,7 +13,7 @@ function MemberNav() {
         client_id: UNSPLASH_API_KEY,
         redirect_uri: `http://localhost:3000/oauth`,
         response_type: 'code',
-        scope: 'public read_user',
+        scope: 'public read_user write_user write_likes write_collections',
     })
 
     const {login} = useSelector(state => state.app);
@@ -21,6 +21,9 @@ function MemberNav() {
     const logOut = () => {
         appActions.updateState({
             login: false,
+        });
+        photoActions.updateState({
+            me: {},
         });
         removeAccessToken();
         removeRefreshToken();

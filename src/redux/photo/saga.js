@@ -1,4 +1,4 @@
-import {all, call, put, takeLatest, select} from 'redux-saga/effects';
+import {all, call, put, takeLatest, select, take} from 'redux-saga/effects';
 import {Action} from "./redux";
 import {Action as AppAction} from "../app/redux";
 import Api from "../../api";
@@ -7,6 +7,7 @@ const saga = function* () {
     yield all([
         takeLatest(Action.Types.FETCH_PHOTOS, function* ({data}) {
             yield put(AppAction.Creators.updateState({isLoading:true}));
+
             const {photo} = yield select();
 
             const result = yield call(Api.fetchPhoto, {
@@ -89,7 +90,7 @@ const saga = function* () {
         takeLatest(Action.Types.GET_RANDOM_PHOTO, function* ({data}) {
             yield put(AppAction.Creators.updateState({isLoading:true}));
             const {photo} = yield select();
-            
+
             if ( typeof photo.visualPhoto.id === 'undefined') {
                 const result = yield call(Api.getRandomPhoto, data);
 
@@ -99,6 +100,25 @@ const saga = function* () {
             }
             yield put(AppAction.Creators.updateState({isLoading:false}));
         }),
+
+        takeLatest(Action.Types.LIKE_PHOTO, function* ({id}) {
+            const result = yield call(Api.likePhoto, id)
+            console.log('@@result',result);
+        }),
+
+        takeLatest(Action.Types.UNLIKE_PHOTO, function* ({id}) {
+            const result = yield call(Api.unlikePhoto, id)
+            console.log('@@result un',result);
+        }),
+
+        takeLatest(Action.Types.LIKED_PHOTOS, function* ({username}) {
+            const result = yield call(Api.unlikePhoto, username)
+
+            yield put(Action.Creators.updateState({
+                likedPhotos: result,
+            }))
+        }),
+
     ])
 }
 
