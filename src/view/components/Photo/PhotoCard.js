@@ -1,9 +1,10 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import styled from "styled-components";
 import {navigate} from "../../../lib/History";
 import {Button} from "../Button/Button.Styled";
 import {photoActions} from "../../../redux/ActionCreators";
 import {useSelector} from "react-redux";
+import cn from "classnames";
 
 function PhotoCard(props) {
 
@@ -22,13 +23,29 @@ function PhotoCard(props) {
         color,
     } = props;
 
+    const likeListById = likedPhotos.map((v) => v.id)
     const ratioPercent = 100 * (height / width);
-    const likePhoto = () => {
-        photoActions.likePhoto(id);
+    const [like, setLike] = useState(false);
+    const isLikePhoto = (e) => {
+        if(like) {
+            setLike(!like);
+            e.currentTarget.classList.remove("isActive");
+            // photoActions.unlikePhoto(id);
+            return false;
+        }
+        if(!like) {
+            setLike(!like);
+            e.currentTarget.classList.add("isActive");
+            // photoActions.likePhoto(id);
+            return false;
+        }
     }
-    const unlikePhoto = () => {
-        photoActions.unlikePhoto(id);
-    }
+
+    useEffect(() => {
+        if (likeListById.includes(id)) {
+            setLike(true);
+        }
+    },[id,likeListById])
 
     return (
         <Container style={{paddingBottom: ratioPercent + "%"}}>
@@ -39,7 +56,9 @@ function PhotoCard(props) {
                 <ClickArea onClick={onClick}/>
 
                 <TextContainerTop>
-                    <Button onClick={ likedPhotos.includes(id) ? likePhoto : unlikePhoto}>
+                    <Button className={cn({isActive: like})}
+                            onClick={isLikePhoto}
+                    >
                         <svg width="32" height="32" className="BWSrD" version="1.1" viewBox="0 0 32 32" aria-hidden="false">
                             <path
                                 d="M17.4 29c-.8.8-2 .8-2.8 0l-12.3-12.8c-3.1-3.1-3.1-8.2 0-11.4 3.1-3.1 8.2-3.1 11.3 0l2.4 2.8 2.3-2.8c3.1-3.1 8.2-3.1 11.3 0 3.1 3.1 3.1 8.2 0 11.4l-12.2 12.8z"/>
@@ -114,6 +133,11 @@ const TextContainerTop = styled.div`
   display:flex;
   justify-content: flex-end;
   cursor: pointer;
+  
+  .isActive {
+    background: #e04c4c;
+    fill: #fff;
+  }
 `;
 
 const TextContainerBottom = styled.div`

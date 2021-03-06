@@ -8,7 +8,6 @@ import {useSelector} from "react-redux";
 function PhotoList({photos}) {
 
     const {me} = useSelector(state => state.photo);
-
     const showPopup = (id, username) => {
         photoActions.updateState({
             popupId: id,
@@ -17,7 +16,7 @@ function PhotoList({photos}) {
     }
 
     useEffect(() => {
-        if(me.username) {
+        if(me?.username) {
             photoActions.likedPhotos(me.username)
         }
     },[me])

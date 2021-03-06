@@ -1,4 +1,4 @@
-import {all, call, put, takeLatest, select, take} from 'redux-saga/effects';
+import {all, call, put, takeLatest, select} from 'redux-saga/effects';
 import {Action} from "./redux";
 import {Action as AppAction} from "../app/redux";
 import Api from "../../api";
@@ -101,18 +101,23 @@ const saga = function* () {
             yield put(AppAction.Creators.updateState({isLoading:false}));
         }),
 
+        takeLatest(Action.Types.GET_ME, function* ({}) {
+            const result = yield call(Api.getMe)
+            yield put(Action.Creators.updateState({
+                me: result,
+            }))
+        }),
+
         takeLatest(Action.Types.LIKE_PHOTO, function* ({id}) {
-            const result = yield call(Api.likePhoto, id)
-            console.log('@@result',result);
+            yield call(Api.likePhoto, id)
         }),
 
         takeLatest(Action.Types.UNLIKE_PHOTO, function* ({id}) {
-            const result = yield call(Api.unlikePhoto, id)
-            console.log('@@result un',result);
+            yield call(Api.unlikePhoto, id)
         }),
 
         takeLatest(Action.Types.LIKED_PHOTOS, function* ({username}) {
-            const result = yield call(Api.unlikePhoto, username)
+            const result = yield call(Api.likedPhotos, username)
 
             yield put(Action.Creators.updateState({
                 likedPhotos: result,

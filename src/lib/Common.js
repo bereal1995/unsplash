@@ -90,6 +90,7 @@ export const setPhotoGroup = (data) => {
 
 export const createObserver = (sentinelCurrent, callMoreItems = () => {}) => {
     let observer = new IntersectionObserver((entries, observer) => {
+        console.log('@@entries',entries);
         entries.forEach(entry => {
             if(entry.isIntersecting) {
                 callMoreItems && callMoreItems()

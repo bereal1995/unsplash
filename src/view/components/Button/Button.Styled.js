@@ -11,6 +11,8 @@ export const Button = styled.div`
     font-size: 14px;
     line-height: 30px;
     opacity: .7;
+    z-index: 1;
+    user-select: none;
     svg{
       width: 16px;
       color: #767676;

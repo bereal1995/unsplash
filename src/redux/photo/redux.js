@@ -3,6 +3,7 @@ import {createActions, createReducer} from "reduxsauce";
 const initialState = {
     me: {},
     likedPhotos: [],
+    likeListById: [],
     list: [],
     search: {
         currentPage: 1,

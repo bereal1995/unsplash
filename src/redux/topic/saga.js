@@ -44,8 +44,6 @@ const saga = function* () {
                 ],
                 currentPage: topic.currentPage+ 1,
             }))
-            console.log('@@id',id);
-
         }),
 
     ])
