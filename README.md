@@ -7,11 +7,20 @@ https://festive-mestorf-df1d46.netlify.app/
 ### 목표
 - unsplash API를 활용해서 유튜브 사이트처럼 만들어보자!
 ### 간단한 기술 스택
-- react, redux
-- redux-saga (리덕스 미들웨어, 외부통신)
-- react-google-login (구글로그인)
-- styled-components (스타일)
-- netlify (배포)
+- redux-saga
+    - api통신을 할 때 스토어에 데이터를 올려주기 위해 redux미들웨어인 redux-saga사용
+    - redux-thunk에 비해 여러가지 기능들이 있다.
+    - Generator문법을 사용하는것이 특징이고, 액션을 모니터링하고 있다가 특정 액션이 발생하면 작동한다.
+- styled-components
+    - 디자인은 기존에 있는 youtube사이트를 보고 만들면 되기때문에 컴포넌트 단위로 스타일을 적용하기 쉽고, props전달도 가능한 styled-components를 선택했다.
+- dotenv
+  - 외부에 노출되면 안되는 환경변수 관리를 위해 설치  
+    ex) API_KEY, APP_ID ....
+- netlify
+    - 깃에 올리기만 하면 자동 빌드 후 배포해준다
+    - 따로 환경변수도 설정이 가능하다.
+    - 처음에 등록하는법도 간단하고 쉬워서 선택했다.
+    
 
 ## 폴더트리 구조
 ```text
